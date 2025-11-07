@@ -1,0 +1,55 @@
+{
+  "timestamp": "2025-11-03T13:18:00Z",
+  "problema": "Página em branco no SSR - dados não carregam",
+  "causa_raiz": {
+    "tipo": "Certificado SSL inválido",
+    "severidade": "CRÍTICA",
+    "descricao": "O servidor SSR Node.js não consegue fazer requisições HTTPS para o backend Django porque o certificado SSL está incorreto",
+    "erro": "ERR_TLS_CERT_ALTNAME_INVALID",
+    "detalhes": "Host cwmcz34q.ainoticia.com.br não está no certificado (*.hostgator.com.br)"
+  },
+  "problemas_secundarios": [
+    {
+      "tipo": "Vue directive não encontrada",
+      "severidade": "BAIXA",
+      "erro": "Failed to resolve directive: back-to-top"
+    },
+    {
+      "tipo": "Propriedades Vue não definidas",
+      "severidade": "MÉDIA",
+      "erros": ["drawerOpened", "leftDrawerOpen"]
+    }
+  ],
+  "fluxo_erro": {
+    "etapa_1": "Frontend SSR inicia na porta 9000",
+    "etapa_2": "Usuário acessa a página",
+    "etapa_3": "SSR tenta buscar dados do backend via process.env.API",
+    "etapa_4": "process.env.API = https://cwmcz34q.ainoticia.com.br/ (prod mode)",
+    "etapa_5": "Axios/Node.js valida certificado SSL",
+    "etapa_6": "ERRO: Certificado é para *.hostgator.com.br, não para cwmcz34q.ainoticia.com.br",
+    "etapa_7": "Requisição falha - dados não carregam - página em branco"
+  },
+  "solucoes_propostas": [
+    {
+      "id": "A",
+      "nome": "Usar API local (comunicação interna)",
+      "tipo": "RECOMENDADA para SSR",
+      "complexidade": "BAIXA",
+      "descricao": "SSR e Django no mesmo servidor comunicam via localhost"
+    },
+    {
+      "id": "B", 
+      "nome": "Desabilitar verificação SSL (temporário)",
+      "tipo": "APENAS DESENVOLVIMENTO",
+      "complexidade": "BAIXA",
+      "descricao": "Permite teste mas inseguro para produção"
+    },
+    {
+      "id": "C",
+      "nome": "Corrigir certificado SSL",
+      "tipo": "DEFINITIVA",
+      "complexidade": "ALTA",
+      "descricao": "Requer acesso ao servidor/DNS"
+    }
+  ]
+}

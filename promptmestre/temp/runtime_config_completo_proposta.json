@@ -1,0 +1,134 @@
+{
+  "_comment": "Runtime Configuration - AiNoticia v2.5",
+  "_version": "2.5.0",
+  "_last_updated": "2025-11-06",
+
+  "hosts": [
+    "localhost",
+    "127.0.0.1",
+    "192.168.122.22",
+    "192.168.156.140",
+    "ainoticia.com.br",
+    "cwmcz34q.ainoticia.com.br"
+  ],
+
+  "ports": {
+    "front_http": [9000, 9100, 3000],
+    "api_http": [8000],
+    "api_https": [],
+    "redis": {
+      "host": "127.0.0.1",
+      "port": 6379,
+      "db": 1
+    }
+  },
+
+  "protocols": {
+    "http": true,
+    "https": true
+  },
+
+  "urls": {
+    "api": [
+      "http://127.0.0.1:8000",
+      "http://192.168.122.22:8000",
+      "http://192.168.156.140:8000",
+      "https://detfg56w.ainoticia.com.br/",
+      "https://cwmcz34q.ainoticia.com.br/"
+    ],
+    "front": [
+      "http://localhost:9000",
+      "http://localhost:9100",
+      "http://localhost:3000",
+      "http://127.0.0.1:9000",
+      "http://192.168.122.22:9000",
+      "http://192.168.156.140:9000",
+      "https://ainoticia.com.br",
+      "https://cwmcz34q.ainoticia.com.br"
+    ]
+  },
+
+  "database": {
+    "DB_ENGINE": "django.db.backends.postgresql",
+    "DB_NAME": "ainoticiabd",
+    "DB_USER": "ainoticiausuario",
+    "DB_PASSWORD": "pensi#FHd6*",
+    "DB_HOST": "192.168.122.22",
+    "DB_PORT": "5432",
+    "DATABASE_URL": "",
+    "fallback": {
+      "DB_ENGINE": "django.db.backends.sqlite3",
+      "DB_NAME": "db.sqlite3"
+    }
+  },
+
+  "django": {
+    "SECRET_KEY": "django-insecure-!e^ble_s9%+a*4%rkd79v7!@n6+zwh)g$7jt6uf@pwarn7$z!5",
+    "DEBUG": true,
+    "APSCHEDULER_DB_URL": ""
+  },
+
+  "generation": {
+    "auto_enabled": true,
+    "interval_hours": 4,
+    "interval_minutes": null,
+    "min_age_minutes": 0,
+    "file_lock_max_age_minutes": 240,
+    "tick_minutes": 10,
+    "manual_generate_token": "",
+
+    "limits_per_round": {
+      "noticia": 1,
+      "esporte": 1,
+      "entretenimento": 1
+    },
+
+    "trends": {
+      "noticias": 12,
+      "esporte": 7,
+      "entretenimento": 7,
+      "agendadas": 3
+    },
+
+    "urls_per_trend": 3,
+
+    "content": {
+      "tipo": 1,
+      "qtd_caracteres": 3000,
+      "qtd_paginas": 1
+    },
+
+    "published_status_value": "S",
+    "gnews_decoder_enabled": true
+  },
+
+  "scheduler": {
+    "health_check_interval_minutes": 15,
+    "cleanup_interval_minutes": 60,
+    "watchdog_interval_minutes": 30,
+    "gemini_reset_interval_hours": 4,
+
+    "auto_jobs": {
+      "health_check": true,
+      "cleanup": true,
+      "gemini_reset": true,
+      "watchdog": true
+    }
+  },
+
+  "telegram": {
+    "token": "7755776552:AAFWvq9dgbk95ACheLJMs9sLYDaIEOwKYuE",
+    "chat_ids": ["640196205", "199914950"],
+    "unified_mode": true
+  },
+
+  "logging": {
+    "level": "DEBUG",
+    "backup_days": 30,
+    "rotate_when": "midnight"
+  },
+
+  "features": {
+    "trends_payload_v2": true
+  }
+}
