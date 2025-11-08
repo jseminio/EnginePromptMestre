@@ -14,6 +14,8 @@ Quando o Claude Code iniciar neste projeto, você DEVE **AUTOMATICAMENTE**:
 4. ✅ Aguardar escolha do usuário (0-4 ou comando)
 5. ✅ Carregar APENAS o arquivo da etapa escolhida
 
+> 📌 **Lembrete**: ao gerar commits ou PRs diretamente, siga o padrão do repositório — mensagem `emoji + resumo curto em português` e PR com objetivo, evidências de testes (`python manage.py test`, `npm run lint`), notas de configuração e anexos visuais quando aplicável.
+
 **NUNCA**:
 - ❌ Esperar que o usuário pergunte sobre o menu
 - ❌ Iniciar sem apresentar as opções
@@ -76,6 +78,7 @@ rm -f prompt_mestre/temp/sessao_atual.json
 1. **Etapa N**: Ao FINALIZAR, salva `contexto_etapa_N.json`
 2. **Etapa N+1**: Ao INICIAR, carrega `contexto_etapa_N.json`
 3. **Validação**: Sempre verificar se arquivo existe antes de ler
+4. **Uso eficiente de tokens**: Consulte cada `contexto_etapa_X.json` sob demanda; evite carregar todos simultaneamente quando não for necessário.
 
 ---
 
@@ -171,11 +174,14 @@ AiNoticia é uma plataforma automatizada de geração de notícias com otimizaç
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+export DJANGO_SETTINGS_MODULE=setup.settings  # garantir que manage.py use as configuracoes corretas
 python manage.py migrate
 ```
 
 **Desenvolvimento:**
 ```bash
+# Ativar ambiente virtual antes de rodar comandos Django
+source venv/bin/activate
 python manage.py runserver                    # Localhost
 python manage.py runserver 0.0.0.0:8000      # Rede local
 python manage.py start_scheduler              # Scheduler
@@ -192,6 +198,7 @@ python manage.py dbshell
 
 **Testes:**
 ```bash
+# Com ambiente virtual ativo
 python manage.py test
 python manage.py test app_search_google
 python manage.py test --verbosity=2

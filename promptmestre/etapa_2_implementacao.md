@@ -109,8 +109,12 @@ echo "Adicionar feature flags ao final do arquivo? (s/n)"
 
 **Template de adicao**:
 ````bash
-# Adicionar feature flags ao settings.py
-cat >> setup/settings.py << 'EOFFLAGS'
+# Garantir que bloco nao existe antes de anexar (idempotente)
+if rg "FEATURE FLAGS - Etapa 2 Implementacao" setup/settings.py >/dev/null 2>&1; then
+  echo "Bloco de feature flags ja presente — revisar antes de duplicar"
+else
+  # Adicionar feature flags ao settings.py
+  cat >> setup/settings.py << 'EOFFLAGS'
 
 # ============================================
 # FEATURE FLAGS - Etapa 2 Implementacao
@@ -118,8 +122,8 @@ cat >> setup/settings.py << 'EOFFLAGS'
 # FEATURE_[NOME] = False  # Default: comportamento legacy
 # Adicione aqui os flags do planejamento
 EOFFLAGS
-
-echo "Feature flags adicionadas!"
+  echo "Feature flags adicionadas!"
+fi
 ````
 
 **Validacao**:
@@ -180,7 +184,10 @@ cat app_search_google/cache.py | grep -A 20 "class RedisCache"
 2. **Criar novo codigo que REUTILIZA o existente**
 ````bash
 # Criar servico que USA o codigo existente
-cat > gerador_conteudo/cache_service.py << 'EOFSERVICE'
+if rg "class ReportCacheService" gerador_conteudo/cache_service.py >/dev/null 2>&1; then
+  echo "ReportCacheService ja existe — avaliar ajustes em vez de recriar"
+else
+  cat > gerador_conteudo/cache_service.py << 'EOFSERVICE'
 """
 Cache Service
 Reutiliza RedisCache existente de app_search_google
@@ -204,7 +211,8 @@ class ReportCacheService:
         return self.cache.set(cache_key, data, ttl)
 EOFSERVICE
 
-echo "Servico criado com REUSO de codigo existente!"
+  echo "Servico criado com REUSO de codigo existente!"
+fi
 ````
 
 3. **Validar que codigo nao tem erros de sintaxe**
@@ -307,7 +315,23 @@ diff gerador_conteudo/reports.py.backup gerador_conteudo/reports.py
 
 ---
 
-#### PASSO 2.3: Validar que codigo legacy ainda funciona
+#### PASSO 2.3: Rodar formatadores e linters do projeto
+````bash
+# Python
+python -m black gerador_conteudo/cache_service.py gerador_conteudo/reports.py
+python -m ruff check gerador_conteudo/cache_service.py gerador_conteudo/reports.py
+
+# Front-end ou outros (executar somente se aplicavel)
+if [ -d front-end ]; then
+  (cd front-end && npm run lint && npm run format)
+fi
+````
+
+> Se algum comando nao estiver instalado, registrar a saida e justificar no relatorio da etapa.
+
+---
+
+#### PASSO 2.4: Validar que codigo legacy ainda funciona
 
 **CRITICO: Antes de prosseguir, garantir que nada quebrou**
 ````bash
@@ -521,6 +545,8 @@ EOFBENCH
 
 # Executar benchmark
 python benchmark_reports.py
+
+# Decida se o script faz parte do escopo final. Caso seja apenas auxiliar, remova-o com `rm benchmark_reports.py` apos registrar os resultados para evitar artefatos temporarios no commit.
 ````
 
 ---

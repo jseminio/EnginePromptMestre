@@ -18,11 +18,13 @@
 ```bash
 git status --short
 git add [arquivos do escopo]
-git commit -m "feat: [descr]; reuse:[X]; gates:[F1]; metrics:loc:+A/-R,rotas:+N/~M,dup:0"
+git commit -m "🚀 [Resumo curto em portugues]"
 git push origin [branch]
 ```
 → Abrir PR (qualquer plataforma) listando riscos, rollback e métricas finais.
-→ Registrar resumo em `contexto.deploy`:
+   - Respeitar diretrizes: objetivo, evidências (ex.: `python manage.py test`, `npm run lint`), notas de configuração, anexos visuais e links relevantes.
+
+→ Registrar resumo em `contexto.deploy` e atualizar sessão:
 ```
 release:
   versao: "X.Y.Z"
@@ -31,4 +33,37 @@ release:
   comandos_git: ["git add ...", "git commit ...", "git push ..."]
   status_pr: ["aberto" | "mesclado" | "pendente"]
 ```
+
+```bash
+cat > prompt_mestre/temp/contexto_etapa_4.json <<'EOFCTX4'
+{
+  "etapa": 4,
+  "concluida": true,
+  "timestamp": "2025-11-02T18:30:00Z",
+  "release": {
+    "versao": "X.Y.Z",
+    "changelog": "...",
+    "branch": "feature/cache-relatorios",
+    "comandos_git": [
+      "git status --short",
+      "git add ...",
+      "git commit -m '🚀 Cache de relatorios protegido por flag'",
+      "git push origin feature/cache-relatorios"
+    ],
+    "status_pr": "aberto"
+  }
+}
+EOFCTX4
+
+cat > prompt_mestre/temp/sessao_atual.json <<'EOFSESSAOFINAL'
+{
+  "etapa_atual": 4,
+  "etapa_concluida": true,
+  "proxima_etapa": null,
+  "timestamp": "2025-11-02T18:30:00Z",
+  "etapas_concluidas": [0, 1, 2, 3, 4]
+}
+EOFSESSAOFINAL
+```
+
 → Confirmar com **“PUSH CONFIRMADO”** para concluir ou informar motivo para não prosseguir.
