@@ -1,0 +1,11 @@
+# Configurações padrão para o AI Orchestrator Suite v3
+engine: auto
+history_policy: strict
+decision_mode: "DE ACORDO"
+quality_gate:
+  coverage_min: 0.85
+  max_cyclomatic_complexity: 10
+logging:
+  format: json
+  level: info
+  destination: logs
