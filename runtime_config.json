@@ -1,0 +1,6 @@
+{
+  "CLIS": ["vibecode", "codex", "claude", "gemini"],
+  "WORKFLOW": "gera -> revisa -> integra -> audita",
+  "AUTO_SUMMARY": true,
+  "DEFAULT_BRANCH": "main"
+}

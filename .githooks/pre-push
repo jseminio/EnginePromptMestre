@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+
+echo "Executando pre-push"
+make lint
+make test
