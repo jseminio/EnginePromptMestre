@@ -33,8 +33,8 @@
 
 ## Entregas e Rastreamento
 - Sempre finalizar com STATE consolidado, incluindo links para logs e rollback.
-- Utilizar `.devops/resume_task.md` para armazenar progresso e comandos executados.
-- Armazenar auditoria de execuções em `.runs/<engine>/`.
+- Utilizar `state/resume_task.md` para armazenar progresso e comandos executados.
+- Salvar snapshots auxiliares em `state/contexto_etapa_<n>.json` quando necessário.
 
 ## Padrões de Observabilidade
 - Logs devem ser estruturados (JSON ou chave=valor), com timestamps e contexto da tarefa.

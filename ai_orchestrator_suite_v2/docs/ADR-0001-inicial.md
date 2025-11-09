@@ -8,7 +8,7 @@ Precisamos de uma solução que permita orquestrar múltiplas IAs com failover, 
 
 ## Decisão
 - Utilizar scripts shell/PowerShell para integração com as CLIs Codex, Claude e Gemini.
-- Persistir STATE em arquivos versionados (`.devops/resume_task.md`, `tasks/<id>.md`).
+- Persistir STATE em arquivos versionados (`state/resume_task.md`, `tasks/<id>.md`).
 - Padronizar prompts e respostas via `prompt/_globals.md`.
 - Estruturar agentes especialistas por domínio para garantir segregação de responsabilidades.
 

@@ -21,4 +21,4 @@ Descreva claramente o objetivo, premissas e stakeholders envolvidos.
 | Data/Hora | Responsável | Ação | Engine | Observações |
 |-----------|-------------|------|--------|-------------|
 
-Anexe evidências e links para logs de execução em `.runs/<engine>/`.
+Anexe evidências e links para registros salvos em `state/` ou em repositórios de código ao final de cada execução.

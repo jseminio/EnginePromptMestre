@@ -10,7 +10,7 @@
 2. Rodar `npm run test` e `npm run lint` no frontend.
 3. Verificar segurança com `bandit -r` e `npm audit --production`.
 4. Validar infraestrutura com `terraform fmt -check` e `terraform validate` (se aplicável).
-5. Consolidar métricas e anexar em `.runs/<engine>/latest.log`.
+5. Consolidar métricas e registrar no `state/resume_task.md` (anexar artefatos adicionais em `state/contexto_etapa_3.json` ou equivalente).
 
 ## Checklist Manual
 - Revisar SPEC e ADR atualizados.

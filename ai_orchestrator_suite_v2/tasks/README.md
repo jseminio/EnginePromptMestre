@@ -18,7 +18,7 @@ Cada tarefa deve seguir o formato abaixo para garantir rastreabilidade e retomad
 - `proxima_acao`: <descrição>
 
 ## Histórico
-- Utilize `.devops/resume_task.md` para registrar cada execução.
+- Utilize `state/resume_task.md` para registrar cada execução.
 ```
 
 Armazene anexos relevantes em `docs/` e referencie-os aqui.

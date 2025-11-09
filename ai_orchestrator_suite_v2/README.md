@@ -1,32 +1,43 @@
-# AI Orchestrator Suite v2 — Multi-IA com Decisão Manual/Automática
+# AI Orchestrator Suite v2 — Pacote de Blueprint e Agentes
 
 ## O que é?
-Uma suíte completa de orquestração para agentes de IA (Codex, Claude, Gemini) com failover automático, retomada via STATE e suporte a execução manual (`DE ACORDO`) ou autônoma (`AUTOMÁTICO`).
+Um kit 100% baseado em Markdown/JSON para executar todo o ciclo (Análise → Planejamento → Implementação → Testes → Deploy) diretamente em qualquer CLI de IA (Codex, Claude, Gemini). Basta copiar o blueprint `orchestrator_blueprint.md`, seguir o menu 0→4 e acionar os agentes especializados desta pasta. Nenhum script `.sh`/`.ps1` é necessário.
 
-## Principais Recursos
-- Orquestrador e agentes especialistas (Arquitetura, DBA, Backend, Frontend, QA, SRE, UX).
-- Failover automático entre Codex → Claude → Gemini.
-- Execução stateless (`HISTORY_POLICY=ignore`) ou com histórico controlado (`strict`).
-- Bootstrap multiplataforma (Windows, Ubuntu, RockyLinux).
-- Logs padronizados e rastreabilidade via `.runs/` e `.devops/resume_task.md`.
+## Como usar
+1. **Abrir a engine** (Codex/Claude/Gemini) e colar o conteúdo de `orchestrator_blueprint.md`.
+2. **Seguir o menu** apresentado pelo blueprint: etapas 0→4 com comandos `/status`, `/context`, `/reset`, `/help`, `/back`, `/skip [n]`.
+3. **Acionar agentes**: o orquestrador identifica automaticamente quais agentes são necessários para a tarefa/etapa e dispara seus prompts em sequência (ex.: Planejamento pode envolver Arquitetura + DBA; Implementação pode invocar Backend + Frontend + UX). Basta copiar o prompt apresentado e adaptá-lo com o contexto.
+4. **Persistir contexto**: utilize os arquivos em `state/` (`resume_task.md` e `contexto_etapa_<n>.json`) para registrar avanços e aprovações (`ANALISADO`, `DE ACORDO`, `IMPLEMENTADO`, `VALIDADO`, `DEPLOYADO`).
+5. **Encerrar** com checklist completo (código, testes, métricas, próximos passos) antes de fechar a sessão.
 
-## Comandos Essenciais
-```bash
-# Inicializar permissões e diretórios
-./ai_orchestrator_suite_v2/devops/ai.sh init
+## Estrutura principal
+| Pasta/Arquivo | Função |
+|---------------|--------|
+| `orchestrator_blueprint.md` | Texto que deve ser colado ao iniciar qualquer sessão; contém o menu, comandos e regras do orquestrador. |
+| `agents/*.md` | Prompts dos agentes especializados (arquitetura, backend, frontend, QA, etc.). |
+| `prompt/_globals.md` | Normas gerais de comunicação, qualidade e STATE. |
+| `checks/quality_checks.md` | Portões de qualidade e checklists automáticos/manuais. |
+| `docs/` | SPEC, ADRs e manual descrevendo o fluxo baseado em blueprint. |
+| `tasks/` | Formato oficial para backlog (`README.md` e `TEMPLATE.md`). |
+| `state/` | Local onde o orquestrador registra contexto entre etapas (`resume_task.md` + snapshots JSON). |
 
-# Executar orquestrador com defaults (engine=auto, history=strict, decision=DE ACORDO)
-./ai_orchestrator_suite_v2/devops/ai.sh run orchestrator tasks/FEAT-101.md
+## Fluxo recomendado
+1. **Etapa 0 – Análise**: confirme entendimento e salve `state/contexto_etapa_0.json`.
+2. **Etapa 1 – Planejamento**: use `agents/architect.md` (mais DBA/UX se necessário) e aguarde `DE ACORDO`.
+3. **Etapa 2 – Implementação**: invoque os agentes técnicos adequados (`backend.md`, `frontend.md`, `dba.md`, `ux.md`).
+4. **Etapa 3 – Testes**: execute `agents/qa.md`, registre métricas e evidências.
+5. **Etapa 4 – Deploy/SRE/UX**: finalize com `agents/sre.md` (git/release) e comunicações finais; se ainda houver itens UX, o orquestrador chama `agents/ux.md` automaticamente.
 
-# Forçar failover completo e modo automático
-env DECISION_MODE=AUTOMÁTICO ./ai_orchestrator_suite_v2/devops/ai.sh run backend tasks/BUG-202.md --engine=abc --history=strict
-```
+Sempre recapitule o contexto salvo antes de iniciar a próxima etapa e atualize `state/resume_task.md` com timestamp, etapa, decisão e próximos passos.
 
-No Windows PowerShell:
-```powershell
-PS> .\ai_orchestrator_suite_v2\devops\ai.ps1 init
-PS> .\ai_orchestrator_suite_v2\devops\ai.ps1 run orchestrator tasks\FEAT-101.md --engine=auto --decision="DE ACORDO"
-```
+## Logs e auditoria
+- **STATE textual**: `state/resume_task.md`.
+- **Snapshots JSON**: `state/contexto_etapa_<n>.json` (opcional).
+- **Histórico por tarefa**: `tasks/<ID>.md` com contexto, entregáveis e progresso.
 
-## Estrutura de Pastas
-Consulte `docs/README.md` para detalhes de cada diretório e processos relacionados.
+## Restrições
+- Mantenha apenas arquivos `.md` e `.json` dentro desta suíte.
+- Não crie novos scripts sem justificativa explícita.
+- Utilize sempre os agentes existentes antes de propor novos.
+
+Para detalhes adicionais consulte `docs/README.md` e `docs/SPEC.md`.
