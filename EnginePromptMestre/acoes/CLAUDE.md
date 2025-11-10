@@ -39,7 +39,7 @@ rm -f acoes/temp/contexto_*.json acoes/temp/sessao_atual.json acoes/temp/backups
 
 ## Workflow resumido
 1. **Orquestrador** (`agents/orchestrator.md`) apresenta menu 0→4 sempre ao iniciar.  
-2. Cada etapa segue o template em `acoes/etapa_[n].md` e salva o contexto correspondente.  
+2. Cada etapa segue o template em `acoes/etapa_[n].md`, aplica a regra de reuso ≥80% (evoluir artefatos existentes antes de criar novos) e salva o contexto correspondente.  
 3. Palavra-chave obrigatória ao final de cada etapa: `ANALISADO`, `PLANEJADO/DE ACORDO`, `IMPLEMENTADO`, `VALIDADO`, `DEPLOYADO`.  
 4. `/status` e `/context` devem ler os JSONs reais; `/reset` só após confirmação do usuário.  
 5. `/skip n` apenas para `n = etapa_atual` ou `etapa_atual+1`, com alerta de riscos.

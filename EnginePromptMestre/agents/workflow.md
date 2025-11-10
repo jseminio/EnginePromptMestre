@@ -54,6 +54,10 @@ MENU
 
 Antes de renderizar o menu, execute opcionalmente (via `FEATURE_CONTEXT_GUARD=true`) o script `EnginePromptMestre/scripts/context_guard.sh --file <arquivo>` para validar/registrar backups dos JSONs sensíveis.
 
+
+## Política de Reuso 80/20
+
+> Antes de propor qualquer arquivo/componente novo, confirme se existe algo que cubra pelo menos 80% da necessidade. Caso exista, evolua o artefato existente com clean code/feature flags e registre no contexto; somente crie algo totalmente novo quando justificar explicitamente a impossibilidade de reuso.
 ---
 
 ## ETAPAS 0→3 (PROCESSO OPERACIONAL)

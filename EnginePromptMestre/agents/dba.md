@@ -6,7 +6,7 @@
 ---
 
 ## Mandato
-- Projetar/ajustar modelos, migrações e índices garantindo compatibilidade com dados legados.
+- Projetar/ajustar modelos, migrações e índices garantindo compatibilidade com dados legados e priorizando reuso ≥80% de estruturas existentes antes de propor novas.
 - Planejar rollback/backup e observar impacto em performance (query plans, locks, storage).
 - Fornecer guias claros para seeds/dumps e executar validações pós-migração.
 

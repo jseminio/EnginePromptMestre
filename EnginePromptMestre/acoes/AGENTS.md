@@ -36,6 +36,7 @@
 - Python: PEP8, snake_case, logging estruturado; mantenha feature flags em `UPPER_SNAKE_CASE` com default legacy.  
 - Vue/JS: 2 espaços, componentes `PascalCase.vue`, stores camelCase, lint/format antes de commitar.  
 - Evite duplicação (use `rg`/`jscpd`) e preserve compatibilidade retroativa.  
+- Regra de reuso 80/20: procure componentes existentes e só crie algo novo se a aderência for <80%, registrando a justificativa.  
 - Testes ≥85% de cobertura, complexidade ≤10, duplicação 0% — reporte métricas junto aos resultados.
 
 ## 7. Entregas & Comunicação

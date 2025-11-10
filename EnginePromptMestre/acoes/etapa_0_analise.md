@@ -8,7 +8,8 @@
 1. ✅ Carregar sessão (se houver): `cat acoes/temp/sessao_atual.json || echo "{}"`.
 2. ✅ Coletar briefing do usuário (tarefa, stack, restrições, prioridades).
 3. ✅ Executar inventário (estrutura, arquivos críticos, dependências, padrões reutilizáveis).
-4. ✅ Identificar riscos + mitigação e registrar métricas de base (LOC, duplicação, testes, complexidade).
+4. ✅ Verificar aplicações de reuso (≥80% de aderência) antes de propor algo novo; documentar fontes e justificativas.
+5. ✅ Identificar riscos + mitigação e registrar métricas de base (LOC, duplicação, testes, complexidade).
 5. ✅ Salvar `acoes/temp/contexto_etapa_0.json` (guardião + backup) e atualizar `sessao_atual.json` com `etapa_atual=0` + aprovação `ANALISADO` pendente.
 
 ---

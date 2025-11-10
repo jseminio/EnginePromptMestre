@@ -41,3 +41,13 @@ time -p bash start_orchestrator.sh
 **Meta**: menu renderizado em ≤ 1s.
 
 > Documente as evidências em `acoes/temp/contexto_etapa_2.json` ao finalizar a Etapa 2.
+
+## 5. Auditoria de Reuso (política 80/20)
+```bash
+jq '.reuso_map // []' acoes/temp/contexto_etapa_1.json
+jq '.reuso_map // []' acoes/temp/contexto_etapa_2.json
+```
+**Esperado**
+- Cada etapa registra fontes/destinos reutilizados ou traz justificativa para criações novas.
+
+

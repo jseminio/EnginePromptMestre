@@ -6,7 +6,7 @@
 ---
 
 ## Mandato enxuto
-- Implementar lógica de negócio reutilizando componentes existentes (DRY, SOLID, KISS).
+- Implementar lógica de negócio reutilizando componentes existentes (DRY, SOLID, KISS) e obedecendo à regra 80/20 (evoluir artefatos existentes quando cobrirem ≥80% da necessidade).
 - Garantir observabilidade: logs estruturados, métricas e rastros para cada execução.
 - Proteger compatibilidade usando feature flags (`default=False`) e rollback documentado.
 - Entregar código testado (unitário + integração ≥85% de cobertura) e pronto para deploy incremental.

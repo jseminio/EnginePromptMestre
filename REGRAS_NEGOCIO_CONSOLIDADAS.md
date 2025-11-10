@@ -48,13 +48,7 @@
 - **Composição** sobre herança
 - **Imutabilidade** onde possível
 
-### 1.4 Política 80/20 de Reuso
-- Antes de propor qualquer arquivo/função/componente novo, verifique se já existe algo que resolva **≥80%** da necessidade atual.
-- Se existir, **evolua o artefato existente** aplicando boas práticas (clean code, feature flags, testes) para cobrir o restante, mantendo compatibilidade.
-- Somente crie algo totalmente novo quando não houver reutilização possível (aderência <80%) e documente a análise no contexto da etapa.
-- Todos os agentes e etapas devem registrar no contexto onde o reuso foi aplicado ou justificar explicitamente porque não foi possível.
-
-### 1.5 Idioma e Comunicação
+### 1.4 Idioma e Comunicação
 - **Português (Brasil)** como padrão em toda comunicação, logs e documentação
 - Mensagens amigáveis ao usuário final
 - Logs estruturados para operadores técnicos
@@ -128,7 +122,7 @@ COMANDOS ESPECIAIS:
 /skip [n]  → Pular para etapa n (com aviso de riscos)
 
 💡 Dica: Siga a ordem sequencial (0→4) para melhor qualidade
-💡 Contexto salvo automaticamente em acoes/temp/
+💡 Contexto salvo automaticamente em promptmestre/temp/
 
 Digite o número da etapa (0-4) ou comando:
 ```
@@ -363,7 +357,7 @@ Digite o número da etapa (0-4) ou comando:
 ### 5.1 Estrutura de Arquivos
 
 ```
-acoes/temp/
+promptmestre/temp/
 ├── sessao_atual.json          # Estado da sessão
 ├── contexto_etapa_0.json      # Análise
 ├── contexto_etapa_1.json      # Planejamento
@@ -376,8 +370,8 @@ acoes/temp/
 
 #### Antes de carregar etapa
 ```bash
-if [ -f acoes/temp/contexto_etapa_X.json ]; then
-  cat acoes/temp/contexto_etapa_X.json
+if [ -f promptmestre/temp/contexto_etapa_X.json ]; then
+  cat promptmestre/temp/contexto_etapa_X.json
 else
   echo "{}"  # Contexto vazio
 fi
@@ -385,7 +379,7 @@ fi
 
 #### Após concluir etapa
 ```bash
-cat > acoes/temp/contexto_etapa_X.json << 'EOFCONTEXT'
+cat > promptmestre/temp/contexto_etapa_X.json << 'EOFCONTEXT'
 {
   "etapa": X,
   "versao": "3.0",
@@ -398,8 +392,8 @@ EOFCONTEXT
 
 #### Reset completo
 ```bash
-rm -f acoes/temp/contexto_*.json
-rm -f acoes/temp/sessao_atual.json
+rm -f promptmestre/temp/contexto_*.json
+rm -f promptmestre/temp/sessao_atual.json
 ```
 
 ### 5.3 Campos Obrigatórios em Contexto

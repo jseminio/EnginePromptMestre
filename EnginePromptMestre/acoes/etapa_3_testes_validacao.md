@@ -7,10 +7,11 @@
 ## Checklist rápido
 1. Carregar contextos 0,1,2 + validar guardião.  
 2. Preparar ambiente (dependências, migrações, variáveis de teste).  
-3. Executar todos os testes planejados (unit, integração, regressão, performance, segurança).  
-4. Registrar métricas (cobertura ≥85%, complexidade ≤10, duplicação 0%, tempos/erros).  
-5. Validar logs/dashboards com feature OFF/ON.  
-6. Salvar `acoes/temp/contexto_etapa_3.json` e atualizar sessão.
+3. Verificar se a implementação respeitou a regra de reuso ≥80% (comparar com catálogo/contextos) e registrar exceções.  
+4. Executar todos os testes planejados (unit, integração, regressão, performance, segurança).  
+5. Registrar métricas (cobertura ≥85%, complexidade ≤10, duplicação 0%, tempos/erros).  
+6. Validar logs/dashboards com feature OFF/ON.  
+7. Salvar `acoes/temp/contexto_etapa_3.json` e atualizar sessão.
 
 ---
 

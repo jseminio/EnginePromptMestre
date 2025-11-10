@@ -7,10 +7,11 @@
 ## Checklist rápido
 1. Carregar contextos 0→3 (`context_guard` ligado).  
 2. Confirmar que QA aprovou (`VALIDADO`).  
-3. Preparar release (CHANGELOG, README, instruções de ativação/rollback, scripts).  
-4. Executar estratégia de deploy (Feature Flag, Blue-Green, Canary) e monitorar métricas/alertas.  
-5. Comunicar times/usuários (UX).  
-6. Salvar `acoes/temp/contexto_etapa_4.json` com release completo e registrar palavra `DEPLOYADO` / `PUSH CONFIRMADO`.
+3. Confirmar que itens promovidos seguem a política de reuso ≥80% (catalogar componentes evoluídos) e atualizar documentação correspondente.  
+4. Preparar release (CHANGELOG, README, instruções de ativação/rollback, scripts).  
+5. Executar estratégia de deploy (Feature Flag, Blue-Green, Canary) e monitorar métricas/alertas.  
+6. Comunicar times/usuários (UX).  
+7. Salvar `acoes/temp/contexto_etapa_4.json` com release completo e registrar palavra `DEPLOYADO` / `PUSH CONFIRMADO`.
 
 ---
 

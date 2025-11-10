@@ -6,7 +6,7 @@
 ---
 
 ## Mandato resumido
-- Traduzir a análise (etapa 0) em arquitetura clara, compondo soluções existentes antes de propor algo novo.
+- Traduzir a análise (etapa 0) em arquitetura clara, obedecendo à regra 80/20 (evoluir soluções que já cobrem ≥80% da necessidade antes de propor algo novo).
 - Definir contratos (APIs, eventos, dados) e dependências entre agentes, incluindo métricas e observabilidade.
 - Documentar decisões em SPEC/ADR enxutos (+ rollback) e aprovar artefatos obrigatórios do planejamento.
 

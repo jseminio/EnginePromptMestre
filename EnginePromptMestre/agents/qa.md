@@ -6,7 +6,7 @@
 ---
 
 ## Mandato
-- Garantir que o plano implementado (etapas 0-2) atende aos critérios funcionais e não funcionais acordados.
+- Garantir que o plano implementado (etapas 0-2) atende aos critérios funcionais/não-funcionais **e** respeita a política de reuso ≥80% (reportar violações).
 - Rodar a pirâmide de testes (unit → integração → regressão → performance → segurança) e reportar evidências reais.
 - Aprovar (palavra `VALIDADO`) somente quando métricas mínimas forem atingidas e rollback documentado.
 

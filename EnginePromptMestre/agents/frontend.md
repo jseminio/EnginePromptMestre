@@ -6,7 +6,7 @@
 ---
 
 ## Mandato
-- Entregar interfaces reutilizando componentes existentes (design system, hooks, stores) e mantendo parity com o backend.
+- Entregar interfaces reutilizando componentes existentes (design system, hooks, stores) e seguindo a regra 80/20 (evoluir componentes que atendam ≥80% do requisito antes de criar novos).
 - Garantir SSR/SEO/acessibilidade, suportar feature flags e lidar com estados offline/erro.
 - Fornecer evidências visuais (prints/gifs) + testes (unitários e2e) para cada ajuste.
 

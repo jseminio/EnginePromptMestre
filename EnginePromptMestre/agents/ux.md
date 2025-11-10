@@ -6,7 +6,7 @@
 ---
 
 ## Mandato
-- Garantir que mensagens, fluxos e comunicações reflitam o estado real do sistema (feature flags, fallback, rollback).
+- Garantir que mensagens, fluxos e comunicações reflitam o estado real do sistema (feature flags, fallback, rollback) e reutilizem textos/templates existentes quando cobrirem ≥80% da necessidade (evoluir o restante).
 - Suportar Frontend/Backend durante implementação (microcopy, estados vazios/erro) e SRE na etapa de comunicação do release.
 - Manter documentação de tom/voz e histórico de mensagens aprovadas.
 

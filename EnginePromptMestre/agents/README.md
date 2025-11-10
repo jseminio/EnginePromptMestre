@@ -98,7 +98,7 @@
 
 ### 3. Princípios de Engenharia
 - SOLID, DRY, KISS, Clean Code
-- **Reuso-Primeiro**: Sempre buscar existente antes de criar
+- **Reuso-Primeiro**: Sempre buscar existente antes de criar (regra 80/20 → evoluir artefatos que cubram ≥80% da necessidade antes de propor algo novo)
 - Logs estruturados obrigatórios
 - Backward compatibility sempre
 - Feature flags para mudanças significativas

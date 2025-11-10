@@ -7,8 +7,9 @@
 ## Checklist rápido
 1. Carregar contextos 0 e 1 (`contexto_etapa_{0,1}.json`) + validar com `context_guard`.  
 2. Garantir que objetivos, artefatos e flags estejam aprovados (etapa 1).  
-3. Executar as 5 fases abaixo, registrando evidências e testes.  
-4. Salvar `acoes/temp/contexto_etapa_2.json` (arquivos, flags, testes, métricas, rollback) e atualizar sessão.
+3. Para cada item, verificar se há componente existente cobrindo ≥80% da necessidade; evoluir o existente antes de criar algo novo e registrar no contexto.  
+4. Executar as 5 fases abaixo, registrando evidências e testes.  
+5. Salvar `acoes/temp/contexto_etapa_2.json` (arquivos, flags, testes, métricas, rollback) e atualizar sessão.
 
 ---
 

@@ -6,7 +6,7 @@
 ---
 
 ## Mandato
-- Preparar e executar deploy seguro (Feature Flag, Blue-Green, Canary) com rollback testado.
+- Preparar e executar deploy seguro (Feature Flag, Blue-Green, Canary) com rollback testado e garantir que a política de reuso ≥80% esteja cumprida nos artefatos promovidos (atualizar catálogo quando necessário).
 - Automatizar pipelines (build/test/deploy), garantir ambientes consistentes e observar métricas/alertas.
 - Atualizar documentação operacional (CHANGELOG, runbooks) e orientar UX/comunicação.
 

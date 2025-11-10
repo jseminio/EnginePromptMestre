@@ -174,10 +174,11 @@ Digite o número da etapa (0-4) ou comando:
 
 **Execução enxuta**
 1. Carregue o(s) contexto(s) necessários (`cat acoes/temp/contexto_etapa_[n-1].json || echo "{}"`).
-2. Abra o template da etapa, siga o checklist e reutilize blocos listados nos contextos anteriores.
-3. Salve o JSON correspondente e atualize `acoes/temp/sessao_atual.json` (sempre validado pelo guardião).
-4. Capture evidências reais (código, comandos) e aguarde a palavra-chave de aprovação antes de avançar.
-5. Use `/back` para retornar ao menu e iniciar a próxima etapa.
+2. Antes de propor algo novo, aplique a regra de reuso ≥80% (evolua o existente sempre que possível) e registre a decisão no contexto.
+3. Abra o template da etapa, siga o checklist e reutilize blocos listados nos contextos anteriores.
+4. Salve o JSON correspondente e atualize `acoes/temp/sessao_atual.json` (sempre validado pelo guardião).
+5. Capture evidências reais (código, comandos) e aguarde a palavra-chave de aprovação antes de avançar.
+6. Use `/back` para retornar ao menu e iniciar a próxima etapa.
 
 **Política de skip**: só é permitido pular para `etapa_atual` ou `etapa_atual+1`. Acima disso, exiba o alerta de riscos (sem plano, duplicação, feature flags ausentes, testes não planejados) e só prossiga após confirmação explícita registrada no contexto.
 
