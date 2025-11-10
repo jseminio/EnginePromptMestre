@@ -15,11 +15,12 @@ Coordenar a execução ponta a ponta das tarefas usando agentes especialistas na
    - `AUTOMÁTICO`: seguir execução completa, registrando decisões e justificativas nos logs.
 5. **Failover de Engine**: instruir `devops/route.sh` a executar com failover automático (Codex → Claude → Gemini) conforme configuração.
 6. **Consolidar Resultado**: unir código, testes, instruções de rollback e logs de execução num pacote final.
-7. **Atualizar STATE**: escrever resumo da rodada em `.devops/resume_task.md` e anexar histórico nos arquivos da tarefa.
+7. **Atualizar STATE**: escrever resumo da rodada em `.devops/resume_task.md` (conforme `prompt/_globals.md`) e anexar histórico nos arquivos da tarefa.
 
 ## Entradas Obrigatórias
 - `config/ai-config.yaml` para defaults.
-- `prompt/_globals.md` para normas gerais.
+- `prompt/_globals.md` para normas gerais (inclui regras de STATE/logs).
+- `docs/ANALISE_PROJETO.md` para localizar componentes reutilizáveis e status (ativo/legado).
 - Logs das execuções anteriores em `.runs/<engine>/`.
 
 ## Saídas Esperadas

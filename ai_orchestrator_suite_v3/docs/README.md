@@ -7,6 +7,7 @@ A suíte orquestra múltiplos agentes de IA (Codex, Claude, Gemini) para entrega
 - `SPEC.md`: visão funcional e técnica do orquestrador.
 - `ADR-0001-inicial.md`: decisão arquitetural inicial.
 - `operating-manual.md`: comandos e fluxos de trabalho.
+- `ANALISE_PROJETO.md`: catálogo de reuso/decisões que deve ser atualizado a cada evolução, manutenção ou remoção.
 
 ## Como Navegar
 1. Consulte `SPEC.md` para entender módulos e interfaces.

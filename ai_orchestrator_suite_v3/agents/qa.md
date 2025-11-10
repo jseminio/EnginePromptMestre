@@ -9,8 +9,8 @@
 1. Revisar entregas de Backend e Frontend juntamente com SPEC.
 2. Mapear cenários críticos, fluxos alternativos e casos de erro.
 3. Construir suites automatizadas e testes manuais documentados.
-4. Publicar relatórios com métricas (cobertura, tempo, falhas) em `.runs/<engine>/`.
-5. Atualizar STATE indicando aprovação ou itens pendentes.
+4. Publicar relatórios com métricas (cobertura, tempo, falhas) nos canais definidos em `prompt/_globals.md`.
+5. Atualizar STATE indicando aprovação ou itens pendentes e registrar aprendizados em `docs/ANALISE_PROJETO.md` (se aplicável).
 
 ## DECISION_MODE
 - `DE ACORDO`: reportar resultados e aguardar decisão de Jessé para prosseguir.
@@ -20,3 +20,4 @@
 - Relatórios de testes e cobertura.
 - Plano de regressão e checklist de aceite.
 - Recomendações de melhoria contínua.
+- Atualização da seção QA em `docs/ANALISE_PROJETO.md` quando surgirem suites ou ferramentas reutilizáveis.

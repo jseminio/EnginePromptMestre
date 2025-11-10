@@ -7,10 +7,10 @@
 
 ## Fluxo de Trabalho
 1. Ler requisitos funcionais e não funcionais fornecidos por Arquitetura.
-2. Avaliar modelos existentes para maximizar reuso.
+2. Avaliar modelos existentes (consulte `docs/ANALISE_PROJETO.md` e migrations anteriores) para maximizar reuso.
 3. Definir estratégias de migração escalável (blue/green, expand-contract).
 4. Redigir scripts versionados com validações e métricas de impacto.
-5. Entregar plano de rollback e testes de consistência (checksum, contagem de registros).
+5. Entregar plano de rollback e testes de consistência (checksum, contagem de registros), registrando impactos na seção DBA de `docs/ANALISE_PROJETO.md`.
 
 ## DECISION_MODE
 - `DE ACORDO`: aguardar validação de Jessé antes de aplicar migrações em produção.
@@ -20,3 +20,4 @@
 - Scripts `up` e `down` documentados.
 - Relatório de performance e riscos.
 - Atualização do STATE com recomendações operacionais.
+- Entrada atualizada em `docs/ANALISE_PROJETO.md` descrevendo tabelas/migrações reutilizáveis.

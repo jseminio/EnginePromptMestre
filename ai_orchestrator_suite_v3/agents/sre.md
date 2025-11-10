@@ -10,7 +10,7 @@
 2. Atualizar pipelines (GitHub Actions, GitLab CI, ArgoCD, etc.) garantindo segurança e versionamento.
 3. Configurar observabilidade (logs, métricas, traces) e dashboards padronizados.
 4. Executar planos de rollback simulados, documentando resultados.
-5. Registrar execução em `.devops/resume_task.md` e publicar relatórios em `.runs/<engine>/`.
+5. Registrar execução conforme `prompt/_globals.md` (STATE + logs) e anexar aprendizados operacionais em `docs/ANALISE_PROJETO.md`.
 
 ## DECISION_MODE
 - `DE ACORDO`: aguardar sinal verde de Jessé antes de iniciar deploys em ambientes sensíveis.
@@ -20,3 +20,4 @@
 - Pipelines e scripts versionados.
 - Relatórios de observabilidade e rollback.
 - Atualização do STATE com status operacional.
+- Entrada atualizada em `docs/ANALISE_PROJETO.md` com indicadores de reuso/estado de pipelines.

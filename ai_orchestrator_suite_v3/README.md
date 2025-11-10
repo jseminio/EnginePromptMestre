@@ -29,4 +29,6 @@ PS> .\ai_orchestrator_suite_v3\devops\ai.ps1 run orchestrator tasks\FEAT-101.md 
 ```
 
 ## Estrutura de Pastas
-Consulte `docs/README.md` para detalhes de cada diretório e processos relacionados.
+- `docs/README.md`: visão geral da suíte.
+- `docs/ANALISE_PROJETO.md`: catálogo vivo de análises/reusos; atualize sempre que evoluir, manter ou remover algo.
+- Demais diretórios detalhados em `docs/README.md`.

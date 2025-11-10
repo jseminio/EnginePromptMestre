@@ -9,6 +9,7 @@ Fornecer um orquestrador de múltiplas inteligências artificiais com failover a
 - **Roteador de Engines**: scripts em `devops/` que abstraem chamadas às CLIs Codex, Claude e Gemini.
 - **Persistência de STATE**: arquivos em `.devops/` e `tasks/` armazenam progresso e permitem retomada.
 - **Auditoria**: diretório `.runs/` agrupa logs e saídas por engine.
+- **Catálogo de Reuso**: `docs/ANALISE_PROJETO.md` concentra análises, componentes existentes e status (ativo/legado/depreciado), devendo ser atualizado a cada mudança.
 
 ## Casos de Uso
 1. **Execução Manual**: Jessé seleciona `DECISION_MODE=DE ACORDO`, aprova plano e cada etapa antes de prosseguir.

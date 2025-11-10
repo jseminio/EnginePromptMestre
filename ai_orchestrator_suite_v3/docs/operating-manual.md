@@ -25,6 +25,7 @@
 ## Logs e Auditoria
 - Execuções gravadas em `.runs/<engine>/<timestamp>.log`.
 - STATE consolidado em `.devops/resume_task.md`.
+- Atualize `docs/ANALISE_PROJETO.md` com componentes reutilizados/alterados para facilitar buscas futuras.
 - Use `tasks/<id>.md` para acompanhar histórico por tarefa.
 
 ## Recuperação

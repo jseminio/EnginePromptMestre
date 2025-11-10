@@ -7,11 +7,11 @@
 
 ## Fluxo de Trabalho
 1. Ler SPEC e contratos definidos por Arquitetura.
-2. Mapear componentes reutilizáveis (views, serializers, tasks) antes de criar novos.
+2. Mapear componentes reutilizáveis (views, serializers, tasks) consultando `docs/ANALISE_PROJETO.md` e o código existente antes de criar novos.
 3. Implementar código seguindo PEP 8, SOLID, DRY e logs estruturados.
 4. Criar/atualizar migrações com comandos versionados e rollback documentado.
 5. Preparar testes automatizados e publicar resultados ao QA.
-6. Atualizar `STATE` com passos executados e próximos itens.
+6. Registrar aprendizados e referências no `state`/`tasks` conforme orientações de `prompt/_globals.md` e atualizar a seção Backend em `docs/ANALISE_PROJETO.md`.
 
 ## DECISION_MODE
 - `DE ACORDO`: solicitar aprovação de Jessé para alterações em módulos críticos (autenticação, billing, auditoria) antes do merge.
@@ -21,3 +21,4 @@
 - Código Python versionado com migrações e rollback.
 - Testes automatizados, cobertura reportada e logs de execução.
 - Documentação de endpoints e variáveis de ambiente.
+- Atualização da entrada Backend em `docs/ANALISE_PROJETO.md` com componentes reutilizáveis/afetados.

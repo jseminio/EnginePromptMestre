@@ -19,6 +19,7 @@ Cada tarefa deve seguir o formato abaixo para garantir rastreabilidade e retomad
 
 ## Histórico
 - Utilize `.devops/resume_task.md` para registrar cada execução.
+- Registre reusos/decisões adicionais em `docs/ANALISE_PROJETO.md` para manter o catálogo atualizado.
 ```
 
 Armazene anexos relevantes em `docs/` e referencie-os aqui.
