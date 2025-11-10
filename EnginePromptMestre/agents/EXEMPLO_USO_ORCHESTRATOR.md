@@ -11,8 +11,8 @@ inicie EnginePromptMestre/agents/orchestrator.md
 
 **1. Executa automaticamente** (SEM pausar):
 ```bash
-if [ -f promptmestre/temp/sessao_atual.json ]; then
-  cat promptmestre/temp/sessao_atual.json
+if [ -f acoes/temp/sessao_atual.json ]; then
+  cat acoes/temp/sessao_atual.json
 else
   echo "{}"
 fi
@@ -68,7 +68,7 @@ COMANDOS ESPECIAIS:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💡 Dica: Siga a ordem sequencial (0→4) para melhor qualidade
-💡 Contexto salvo automaticamente em promptmestre/temp/
+💡 Contexto salvo automaticamente em acoes/temp/
 
 Digite o número da etapa (0-4) ou comando:
 ```
@@ -88,8 +88,8 @@ inicie EnginePromptMestre/agents/orchestrator.md
 
 **1. Executa automaticamente**:
 ```bash
-if [ -f promptmestre/temp/sessao_atual.json ]; then
-  cat promptmestre/temp/sessao_atual.json
+if [ -f acoes/temp/sessao_atual.json ]; then
+  cat acoes/temp/sessao_atual.json
 else
   echo "{}"
 fi

@@ -27,7 +27,7 @@ Projetar modelos de dados, criar migrações seguras com rollback, tuning de per
 
 ### 1. Ler Requisitos
 ```bash
-cat promptmestre/temp/arquitetura_aprovada.json
+cat acoes/temp/arquitetura_aprovada.json
 cat docs/SPEC_feature.md
 ```
 

@@ -3,7 +3,7 @@
 Guia rápido para validar o fluxo 0→4 após qualquer alteração nos blueprints ou feature flags.
 
 ## Pré-condições
-- Contextos `promptmestre/temp/contexto_etapa_{0,1}.json` atualizados
+- Contextos `acoes/temp/contexto_etapa_{0,1}.json` atualizados
 - Variáveis de ambiente opcionais:
   - `FEATURE_CONTEXT_GUARD=true` para validar persistência
   - `FEATURE_MENU_TELEMETRIA=true` para exibir métricas no menu
@@ -11,12 +11,12 @@ Guia rápido para validar o fluxo 0→4 após qualquer alteração nos blueprint
 ## 1. Guardião de Contexto (unitário)
 ```bash
 FEATURE_CONTEXT_GUARD=true \
-EnginePromptMestre/scripts/context_guard.sh --file promptmestre/temp/contexto_etapa_1.json --force
-EnginePromptMestre/scripts/context_guard.sh --file promptmestre/temp/sessao_atual.json --force
+EnginePromptMestre/scripts/context_guard.sh --file acoes/temp/contexto_etapa_1.json --force
+EnginePromptMestre/scripts/context_guard.sh --file acoes/temp/sessao_atual.json --force
 ```
 **Validações**
 - Saída `[context_guard][INFO] JSON valido ...`
-- Arquivos novos em `promptmestre/temp/backups/`
+- Arquivos novos em `acoes/temp/backups/`
 
 ## 2. Renderização do Menu Único (integração)
 ```bash
@@ -40,4 +40,4 @@ time -p bash start_orchestrator.sh
 ```
 **Meta**: menu renderizado em ≤ 1s.
 
-> Documente as evidências em `promptmestre/temp/contexto_etapa_2.json` ao finalizar a Etapa 2.
+> Documente as evidências em `acoes/temp/contexto_etapa_2.json` ao finalizar a Etapa 2.

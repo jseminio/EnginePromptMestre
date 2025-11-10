@@ -11,21 +11,21 @@
 ## CARREGAR CONTEXTO DAS ETAPAS ANTERIORES (Obrigatorio)
 ````bash
 # Verificar se etapas 0 e 1 foram concluidas
-if [ ! -f prompt_mestre/temp/contexto_etapa_0.json ]; then
+if [ ! -f acoes/temp/contexto_etapa_0.json ]; then
   echo "ERRO: Etapa 0 nao foi concluida!"
   exit 1
 fi
 
-if [ ! -f prompt_mestre/temp/contexto_etapa_1.json ]; then
+if [ ! -f acoes/temp/contexto_etapa_1.json ]; then
   echo "ERRO: Etapa 1 nao foi concluida!"
   exit 1
 fi
 
 echo "=== CONTEXTO ETAPA 0 (Analise) ==="
-cat prompt_mestre/temp/contexto_etapa_0.json
+cat acoes/temp/contexto_etapa_0.json
 echo ""
 echo "=== CONTEXTO ETAPA 1 (Planejamento) ==="
-cat prompt_mestre/temp/contexto_etapa_1.json
+cat acoes/temp/contexto_etapa_1.json
 echo ""
 echo "Contextos carregados com sucesso!"
 echo "Pressione ENTER para iniciar implementacao..."
@@ -726,7 +726,7 @@ Para ativar o cache:
 
 ## SALVAR CONTEXTO (Automatico)
 ````bash
-cat > prompt_mestre/temp/contexto_etapa_2.json << 'EOFCONTEXT'
+cat > acoes/temp/contexto_etapa_2.json << 'EOFCONTEXT'
 {
   "etapa": 2,
   "versao": "3.0",
@@ -787,7 +787,7 @@ cat > prompt_mestre/temp/contexto_etapa_2.json << 'EOFCONTEXT'
 }
 EOFCONTEXT
 
-cat > prompt_mestre/temp/sessao_atual.json << 'EOFSESSAO'
+cat > acoes/temp/sessao_atual.json << 'EOFSESSAO'
 {
   "etapa_atual": 2,
   "etapa_concluida": true,
@@ -799,8 +799,8 @@ EOFSESSAO
 
 echo ""
 echo "Contexto salvo em:"
-echo "   - prompt_mestre/temp/contexto_etapa_2.json"
-echo "   - prompt_mestre/temp/sessao_atual.json"
+echo "   - acoes/temp/contexto_etapa_2.json"
+echo "   - acoes/temp/sessao_atual.json"
 ````
 
 ---
@@ -847,4 +847,4 @@ Proxima acao apos aprovacao:
 **Versao**: 3.0  
 **Compatibilidade**: Claude, GPT-4, Mistral, Gemini, todos os LLMs  
 **Proxima Etapa**: Testes (etapa_3_testes.md)  
-**Contexto Salvo**: prompt_mestre/temp/contexto_etapa_2.json
+**Contexto Salvo**: acoes/temp/contexto_etapa_2.json

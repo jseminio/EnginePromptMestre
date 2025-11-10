@@ -24,7 +24,7 @@
     "notes": "Sessao deve refletir estado consolidado do workflow no momento do salvamento."
   },
   "backup": {
-    "folder": "promptmestre/temp/backups",
+    "folder": "acoes/temp/backups",
     "retencao": 5,
     "timestamp_format": "%Y%m%dT%H%M%SZ"
   }

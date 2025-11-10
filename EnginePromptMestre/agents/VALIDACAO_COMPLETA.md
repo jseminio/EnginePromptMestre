@@ -20,7 +20,7 @@ Todos os super agentes especialistas foram criados consolidando 100% das regras 
 ## ARTEFATOS CRIADOS
 
 ### 1. Documento de Regras Consolidadas
-📄 **REGRAS_NEGOCIO_CONSOLIDADAS.md** (62KB)
+📄 **acoes/REGRAS_NEGOCIO_CONSOLIDADAS.md** (62KB)
 - 10 seções principais
 - Todas as regras de negócio unificadas
 - Documento autoritativo e completo
@@ -70,7 +70,7 @@ Todos os super agentes especialistas foram criados consolidando 100% das regras 
 | Regra | Origem | Aplicado em | Status |
 |-------|--------|-------------|--------|
 | Sequência 0→4 | promptmestre | Orquestrador, Workflow | ✅ |
-| Menu automático | promptmestre/CLAUDE.md | Orquestrador | ✅ |
+| Menu automático | acoes/CLAUDE.md | Orquestrador | ✅ |
 | Comandos especiais | promptmestre | Orquestrador | ✅ |
 | Navegação entre etapas | promptmestre | Orquestrador | ✅ |
 | Gates e aprovações | promptmestre | Orquestrador, Workflow | ✅ |
@@ -260,7 +260,7 @@ Conforme solicitado, quando houve conflito entre as 3 fontes:
 
 ```
 EnginePromptMestre/
-├── REGRAS_NEGOCIO_CONSOLIDADAS.md (62KB)
+├── acoes/REGRAS_NEGOCIO_CONSOLIDADAS.md (62KB)
 └── agents/
     ├── README.md (14KB)
     ├── workflow.md (45KB)
@@ -331,7 +331,7 @@ O orquestrador determina quais agentes são necessários e os aciona em ordem.
 ## CHECKLIST FINAL DE VALIDAÇÃO
 
 ### Documentação
-- [x] REGRAS_NEGOCIO_CONSOLIDADAS.md criado e completo
+- [x] acoes/REGRAS_NEGOCIO_CONSOLIDADAS.md criado e completo
 - [x] agents/README.md criado e completo
 - [x] agents/workflow.md criado e completo
 - [x] agents/VALIDACAO_COMPLETA.md criado

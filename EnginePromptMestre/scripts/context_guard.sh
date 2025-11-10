@@ -5,7 +5,7 @@ usage() {
   cat <<'USAGE'
 context_guard.sh --file <caminho> [--force]
 
-Valida JSON de contexto/sessao contra o schema leve em promptmestre/temp/context_schema.json,
+Valida JSON de contexto/sessao contra o schema leve em acoes/temp/context_schema.json,
 cria backup versionado e registra logs pro orquestrador.
 
 Opcoes:
@@ -16,7 +16,7 @@ Opcoes:
 Variaveis de ambiente:
   FEATURE_CONTEXT_GUARD  Flag para habilitar o guard (default: false)
   SCHEMA_PATH            Caminho alternativo para o schema
-  BACKUP_DIR             Pasta de backups (default: promptmestre/temp/backups)
+  BACKUP_DIR             Pasta de backups (default: acoes/temp/backups)
 USAGE
 }
 
@@ -28,8 +28,8 @@ log() {
 command -v jq >/dev/null 2>&1 || { echo "jq nao encontrado" >&2; exit 1; }
 command -v python3 >/dev/null 2>&1 || { echo "python3 nao encontrado" >&2; exit 1; }
 
-SCHEMA_PATH=${SCHEMA_PATH:-promptmestre/temp/context_schema.json}
-BACKUP_DIR=${BACKUP_DIR:-promptmestre/temp/backups}
+SCHEMA_PATH=${SCHEMA_PATH:-acoes/temp/context_schema.json}
+BACKUP_DIR=${BACKUP_DIR:-acoes/temp/backups}
 FLAG=${FEATURE_CONTEXT_GUARD:-false}
 FORCE=false
 TARGET_FILE=""

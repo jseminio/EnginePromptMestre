@@ -122,9 +122,9 @@ npx jscpd --threshold 0 --format "json" --output "./jscpd-report.json"
 ### 1. Revisar Entregas
 ```bash
 # Carregar contextos
-cat promptmestre/temp/contexto_etapa_0.json
-cat promptmestre/temp/contexto_etapa_1.json
-cat promptmestre/temp/contexto_etapa_2.json
+cat acoes/temp/contexto_etapa_0.json
+cat acoes/temp/contexto_etapa_1.json
+cat acoes/temp/contexto_etapa_2.json
 
 # Revisar SPEC
 cat docs/SPEC_feature.md

@@ -100,8 +100,8 @@ onMounted(() => {
 ### 1. Receber Handoff
 ```bash
 # Carregar contextos
-cat promptmestre/temp/contexto_etapa_1.json
-cat promptmestre/temp/arquitetura_aprovada.json
+cat acoes/temp/contexto_etapa_1.json
+cat acoes/temp/arquitetura_aprovada.json
 
 # Ler contratos de API
 cat docs/contratos_api.yaml

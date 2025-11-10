@@ -6,6 +6,26 @@
 
 ---
 
+## INÍCIO RÁPIDO
+
+1. **Carregar o orquestrador**  
+   ```bash
+   cat EnginePromptMestre/agents/orchestrator.md
+   ```  
+   O menu 0→4 é exibido automaticamente com status atual.
+2. **Documentação essencial**
+   | Documento | Caminho |
+   |-----------|---------|
+   | Regras de Negócio Consolidadas | `acoes/REGRAS_NEGOCIO_CONSOLIDADAS.md` |
+   | Workflow 0→4 | `agents/workflow.md` |
+   | Validação Completa | `agents/VALIDACAO_COMPLETA.md` |
+3. **Diretórios padrão**
+   - `agents/` → especialistas autônomos (este arquivo faz o índice).
+   - `acoes/` → templates/ações etapa 0→4, contextos e documentação de apoio.
+   - `scripts/` → utilitários compartilhados (`context_guard.sh`, etc.).
+
+---
+
 ## ÍNDICE DE AGENTES
 
 | Agente | Arquivo | Responsabilidade Principal | Ordem de Execução |
@@ -90,7 +110,7 @@
 - Zero falhas críticas
 
 ### 5. Persistência
-- Sempre atualizar contexto em `promptmestre/temp/`
+- Sempre atualizar contexto em `acoes/temp/`
 - Salvar STATE após cada etapa
 - Manter histórico de decisões
 
@@ -105,7 +125,7 @@
 - Nunca assumir sem verificar
 
 ### 8. Catálogo de Reuso
-- Consultar `REGRAS_NEGOCIO_CONSOLIDADAS.md` antes de criar novo
+- Consultar `acoes/REGRAS_NEGOCIO_CONSOLIDADAS.md` antes de criar novo
 - Atualizar catálogo após mudanças
 - Documentar componentes reutilizáveis
 
@@ -183,37 +203,37 @@ Ver detalhes completos em: `workflow.md`
 
 ### Etapa 0: Análise (Orquestrador)
 - Mapear reuso, riscos, evidências
-- Salvar em `promptmestre/temp/contexto_etapa_0.json`
+- Salvar em `acoes/temp/contexto_etapa_0.json`
 - Aprovação: `ANALISADO`
 
 ### Etapa 1: Planejamento (Arquiteto + DBA/UX se necessário)
 - Arquitetura, arquivos, testes, feature flags
-- Salvar em `promptmestre/temp/contexto_etapa_1.json`
+- Salvar em `acoes/temp/contexto_etapa_1.json`
 - Aprovação: `PLANEJADO`
 
 ### Etapa 2: Implementação (Backend + Frontend + DBA + UX)
 - Código incremental com gates
-- Salvar em `promptmestre/temp/contexto_etapa_2.json`
+- Salvar em `acoes/temp/contexto_etapa_2.json`
 - Aprovação: `IMPLEMENTADO`
 
 ### Etapa 3: Testes (QA + agentes anteriores se ajustes)
 - Validação completa, métricas, evidências
-- Salvar em `promptmestre/temp/contexto_etapa_3.json`
+- Salvar em `acoes/temp/contexto_etapa_3.json`
 - Aprovação: `VALIDADO`
 
 ### Etapa 4: Deploy (SRE + UX)
 - Git, release, comunicação
-- Salvar em `promptmestre/temp/contexto_etapa_4.json`
+- Salvar em `acoes/temp/contexto_etapa_4.json`
 - Aprovação: `DEPLOYADO`
 
 ---
 
 ## REFERÊNCIAS
 
-- **Regras Consolidadas**: `../REGRAS_NEGOCIO_CONSOLIDADAS.md`
+- **Regras Consolidadas**: `../acoes/REGRAS_NEGOCIO_CONSOLIDADAS.md`
 - **Workflow Detalhado**: `workflow.md`
 - **Orquestrador**: `orchestrator.md`
-- **Etapas Promptmestre**: `../promptmestre/etapa_*.md`
+- **Etapas Promptmestre**: `../acoes/etapa_*.md`
 
 ---
 

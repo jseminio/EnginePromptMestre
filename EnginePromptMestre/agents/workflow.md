@@ -33,7 +33,7 @@ Stack: [stack_detectada]
 Branch: [git_branch]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📍 Status: [status derivado de promptmestre/temp/sessao_atual.json]
+📍 Status: [status derivado de acoes/temp/sessao_atual.json]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ETAPAS DISPONÍVEIS (Recomendado: 0→1→2→3→4):
@@ -68,8 +68,8 @@ Coletar contexto essencial, mapear reuso, identificar riscos e provar decisões 
 
 #### 1. Carregar Contexto Anterior (se existir)
 ```bash
-if [ -f promptmestre/temp/sessao_atual.json ]; then
-  cat promptmestre/temp/sessao_atual.json
+if [ -f acoes/temp/sessao_atual.json ]; then
+  cat acoes/temp/sessao_atual.json
 fi
 ```
 
@@ -117,7 +117,7 @@ PROJETO: [nome, tipo, stack]
 
 #### 5. Salvar Contexto
 ```bash
-cat > promptmestre/temp/contexto_etapa_0.json << 'EOF'
+cat > acoes/temp/contexto_etapa_0.json << 'EOF'
 {
   "etapa": 0,
   "concluida": true,
@@ -156,7 +156,7 @@ Transformar análise em plano de execução incremental com reuso máximo, elimi
 
 #### 1. Carregar Contexto Etapa 0
 ```bash
-cat promptmestre/temp/contexto_etapa_0.json
+cat acoes/temp/contexto_etapa_0.json
 ```
 
 #### 2. Planejamento em 8 Passos
@@ -202,7 +202,7 @@ INSUMOS DA ANÁLISE: [resumo etapa 0]
 
 #### 4. Salvar Contexto
 ```bash
-cat > promptmestre/temp/contexto_etapa_1.json << 'EOF'
+cat > acoes/temp/contexto_etapa_1.json << 'EOF'
 {
   "etapa": 1,
   "concluida": true,
@@ -242,8 +242,8 @@ Implementar plano de forma incremental com evidências de funcionamento em cada 
 
 #### 1. Carregar Contextos Etapas 0 e 1
 ```bash
-cat promptmestre/temp/contexto_etapa_0.json
-cat promptmestre/temp/contexto_etapa_1.json
+cat acoes/temp/contexto_etapa_0.json
+cat acoes/temp/contexto_etapa_1.json
 ```
 
 #### 2. Implementação em 5 Fases
@@ -279,7 +279,7 @@ cat promptmestre/temp/contexto_etapa_1.json
 - **REUSO-PRIMEIRO**: Buscar existente antes de criar
 - **BACKWARD-COMPATIBLE**: Feature flags + legacy funcionando
 
-> Roteiro recomendado de validação: `promptmestre/tests/orchestrator_smoke.md`.
+> Roteiro recomendado de validação: `acoes/tests/orchestrator_smoke.md`.
 
 #### 4. Template de Saída
 ```markdown
@@ -310,7 +310,7 @@ PRÓXIMOS PASSOS: [etapa 3]
 
 #### 5. Salvar Contexto
 ```bash
-cat > promptmestre/temp/contexto_etapa_2.json << 'EOF'
+cat > acoes/temp/contexto_etapa_2.json << 'EOF'
 {
   "etapa": 2,
   "concluida": true,
@@ -347,9 +347,9 @@ Garantir qualidade através de testes completos, métricas objetivas e evidênci
 
 #### 1. Carregar Contextos Anteriores
 ```bash
-cat promptmestre/temp/contexto_etapa_0.json
-cat promptmestre/temp/contexto_etapa_1.json
-cat promptmestre/temp/contexto_etapa_2.json
+cat acoes/temp/contexto_etapa_0.json
+cat acoes/temp/contexto_etapa_1.json
+cat acoes/temp/contexto_etapa_2.json
 ```
 
 #### 2. Execução de Testes
@@ -435,7 +435,7 @@ PRÓXIMOS PASSOS: [etapa 4]
 
 #### 5. Salvar Contexto
 ```bash
-cat > promptmestre/temp/contexto_etapa_3.json << 'EOF'
+cat > acoes/temp/contexto_etapa_3.json << 'EOF'
 {
   "etapa": 3,
   "concluida": true,
@@ -478,10 +478,10 @@ Preparar release, executar deploy, atualizar documentação e comunicar mudança
 
 #### 1. Carregar Todos os Contextos
 ```bash
-cat promptmestre/temp/contexto_etapa_0.json
-cat promptmestre/temp/contexto_etapa_1.json
-cat promptmestre/temp/contexto_etapa_2.json
-cat promptmestre/temp/contexto_etapa_3.json
+cat acoes/temp/contexto_etapa_0.json
+cat acoes/temp/contexto_etapa_1.json
+cat acoes/temp/contexto_etapa_2.json
+cat acoes/temp/contexto_etapa_3.json
 ```
 
 #### 2. Preparação do Release
@@ -619,7 +619,7 @@ PRÓXIMOS PASSOS:
 
 #### 6. Salvar Contexto
 ```bash
-cat > promptmestre/temp/contexto_etapa_4.json << 'EOF'
+cat > acoes/temp/contexto_etapa_4.json << 'EOF'
 {
   "etapa": 4,
   "concluida": true,
@@ -678,8 +678,8 @@ Contextos Salvos:
 Exibe snapshot resumido dos contextos.
 
 ```bash
-cat promptmestre/temp/contexto_etapa_0.json | jq .
-cat promptmestre/temp/contexto_etapa_1.json | jq .
+cat acoes/temp/contexto_etapa_0.json | jq .
+cat acoes/temp/contexto_etapa_1.json | jq .
 # ...
 ```
 
@@ -690,8 +690,8 @@ Remove arquivos de contexto (pede confirmação).
 echo "⚠️  ATENÇÃO: Isso apagará TODO o contexto atual!"
 echo "Tem certeza? (s/n)"
 # Se confirmado:
-rm -f promptmestre/temp/contexto_*.json
-rm -f promptmestre/temp/sessao_atual.json
+rm -f acoes/temp/contexto_*.json
+rm -f acoes/temp/sessao_atual.json
 echo "✓ Contexto limpo. Reiniciando..."
 ```
 

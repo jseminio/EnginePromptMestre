@@ -118,9 +118,9 @@ def gerar_relatorio(tipo: str) -> dict:
 ### 1. Ler SPEC e Contratos
 ```bash
 # Carregar contextos anteriores
-cat promptmestre/temp/contexto_etapa_0.json
-cat promptmestre/temp/contexto_etapa_1.json
-cat promptmestre/temp/arquitetura_aprovada.json
+cat acoes/temp/contexto_etapa_0.json
+cat acoes/temp/contexto_etapa_1.json
+cat acoes/temp/arquitetura_aprovada.json
 
 # Ler SPEC
 cat docs/SPEC_feature.md
@@ -546,7 +546,7 @@ Todos os endpoints e serviços com logs em formato JSON.
 
 ## REFERÊNCIAS
 
-- **Regras Consolidadas**: `../REGRAS_NEGOCIO_CONSOLIDADAS.md`
+- **Regras Consolidadas**: `../acoes/REGRAS_NEGOCIO_CONSOLIDADAS.md`
 - **Workflow**: `workflow.md`
 - **SPEC**: `../docs/SPEC_feature.md`
 - **Arquitetura**: `architect.md`

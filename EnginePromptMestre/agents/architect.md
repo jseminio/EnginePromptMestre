@@ -29,7 +29,7 @@ abilidade.
 ### Contextos
 ```bash
 # SEMPRE carregar contexto da etapa 0
-cat promptmestre/temp/contexto_etapa_0.json
+cat acoes/temp/contexto_etapa_0.json
 ```
 
 ### Informações Necessárias
@@ -46,7 +46,7 @@ cat promptmestre/temp/contexto_etapa_0.json
 ### 1. Avaliar Catálogo de Reuso
 ```bash
 # Consultar catálogo de componentes reutilizáveis
-# Ver REGRAS_NEGOCIO_CONSOLIDADAS.md seção "Catálogo de Reuso"
+# Ver `acoes/REGRAS_NEGOCIO_CONSOLIDADAS.md` seção "Catálogo de Reuso"
 ```
 
 **Perguntas-chave:**
@@ -298,7 +298,7 @@ ARQUITETURA COMPLETA — [Feature]
 ### Atualizar STATE
 ```bash
 # Adicionar seção de arquitetura ao contexto
-cat > promptmestre/temp/arquitetura_aprovada.json << 'EOF'
+cat > acoes/temp/arquitetura_aprovada.json << 'EOF'
 {
   "feature": "...",
   "arquiteto": "...",
@@ -433,7 +433,7 @@ EOF
 
 ## REFERÊNCIAS
 
-- **Regras Consolidadas**: `../REGRAS_NEGOCIO_CONSOLIDADAS.md`
+- **Regras Consolidadas**: `../acoes/REGRAS_NEGOCIO_CONSOLIDADAS.md`
 - **Workflow**: `workflow.md`
 - **Orquestrador**: `orchestrator.md`
 - **SPEC Template**: `../docs/SPEC.md` (se existir)

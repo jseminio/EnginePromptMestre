@@ -10,9 +10,9 @@
 
 ## CARREGAR CONTEXTO ANTERIOR (Se existir)
 ```bash
-if [ -f prompt_mestre/temp/sessao_atual.json ]; then
+if [ -f acoes/temp/sessao_atual.json ]; then
   echo "Sessao anterior detectada:"
-  cat prompt_mestre/temp/sessao_atual.json
+  cat acoes/temp/sessao_atual.json
   echo ""
   echo "Deseja continuar de onde parou? (s/n)"
 else
@@ -334,7 +334,7 @@ Reuso: 60 porcento do codigo sera reutilizado
 
 Ao finalizar a analise, o assistente deve executar:
 ```bash
-cat > prompt_mestre/temp/contexto_etapa_0.json << 'EOFCONTEXT'
+cat > acoes/temp/contexto_etapa_0.json << 'EOFCONTEXT'
 {
   "etapa": 0,
   "versao": "3.0",
@@ -360,7 +360,7 @@ cat > prompt_mestre/temp/contexto_etapa_0.json << 'EOFCONTEXT'
 }
 EOFCONTEXT
 
-cat > prompt_mestre/temp/sessao_atual.json << 'EOFSESSAO'
+cat > acoes/temp/sessao_atual.json << 'EOFSESSAO'
 {
   "etapa_atual": 0,
   "etapa_concluida": true,
@@ -372,8 +372,8 @@ EOFSESSAO
 
 echo ""
 echo "Contexto salvo em:"
-echo "   - prompt_mestre/temp/contexto_etapa_0.json"
-echo "   - prompt_mestre/temp/sessao_atual.json"
+echo "   - acoes/temp/contexto_etapa_0.json"
+echo "   - acoes/temp/sessao_atual.json"
 ```
 
 ---
@@ -415,4 +415,4 @@ Proxima acao apos aprovacao:
 **Versao**: 3.0  
 **Compatibilidade**: Claude, GPT-4, Mistral, Gemini, todos os LLMs  
 **Proxima Etapa**: Planejamento (etapa_1_planejamento.md)  
-**Contexto Salvo**: prompt_mestre/temp/contexto_etapa_0.json
+**Contexto Salvo**: acoes/temp/contexto_etapa_0.json

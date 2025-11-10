@@ -25,8 +25,8 @@ Esta pasta armazena o contexto entre etapas do workflow.
 
 - Ative `FEATURE_CONTEXT_GUARD=true` para rodar automaticamente:
   ```bash
-  EnginePromptMestre/scripts/context_guard.sh --file promptmestre/temp/contexto_etapa_1.json
-  EnginePromptMestre/scripts/context_guard.sh --file promptmestre/temp/sessao_atual.json
+  EnginePromptMestre/scripts/context_guard.sh --file acoes/temp/contexto_etapa_1.json
+  EnginePromptMestre/scripts/context_guard.sh --file acoes/temp/sessao_atual.json
   ```
 - O script valida o JSON (estrutura mínima, tipos básicos) usando `context_schema.json`, grava um backup em `temp/backups/` e mantém apenas as últimas 5 versões por arquivo.
 - Use `--force` para executar manualmente mesmo com a flag desligada.
@@ -35,9 +35,9 @@ Esta pasta armazena o contexto entre etapas do workflow.
 
 Para iniciar uma nova sessão:
 ```bash
-rm -f prompt_mestre/temp/contexto_*.json
-rm -f prompt_mestre/temp/sessao_atual.json
-rm -f prompt_mestre/temp/backups/*.json
+rm -f acoes/temp/contexto_*.json
+rm -f acoes/temp/sessao_atual.json
+rm -f acoes/temp/backups/*.json
 ```
 
 ## Compatibilidade

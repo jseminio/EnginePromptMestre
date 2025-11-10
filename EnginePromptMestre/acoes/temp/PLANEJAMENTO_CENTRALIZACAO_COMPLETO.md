@@ -471,9 +471,9 @@ GENERATION_AUTO_ENABLED = config('GENERATION_AUTO_ENABLED',
 
 ### LER/APOIAR-SE (arquivos de referência):
 
-- `prompt_mestre/temp/runtime_config_completo_proposta.json` (referência)
-- `prompt_mestre/temp/analise_centralizacao_config.md` (análise)
-- `prompt_mestre/temp/contexto_etapa_0.json` (contexto)
+- `acoes/temp/runtime_config_completo_proposta.json` (referência)
+- `acoes/temp/analise_centralizacao_config.md` (análise)
+- `acoes/temp/contexto_etapa_0.json` (contexto)
 
 ---
 
@@ -834,7 +834,7 @@ Antes de prosseguir para ETAPA 2 (Implementação):
 
 **Arquivos criados nesta etapa**:
 - ✅ `config/runtime_config_COMPLETO.json`
-- ✅ `prompt_mestre/temp/PLANEJAMENTO_CENTRALIZACAO_COMPLETO.md` (este arquivo)
+- ✅ `acoes/temp/PLANEJAMENTO_CENTRALIZACAO_COMPLETO.md` (este arquivo)
 
 ---
 

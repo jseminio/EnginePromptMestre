@@ -10,14 +10,14 @@
 
 ## CARREGAR CONTEXTO DA ETAPA 0 (Obrigatorio)
 ```bash
-if [ ! -f prompt_mestre/temp/contexto_etapa_0.json ]; then
+if [ ! -f acoes/temp/contexto_etapa_0.json ]; then
   echo "ERRO: Etapa 0 nao foi concluida!"
   echo "Execute a Etapa 0 (Analise) antes de prosseguir."
   exit 1
 fi
 
 echo "Carregando contexto da Etapa 0..."
-cat prompt_mestre/temp/contexto_etapa_0.json
+cat acoes/temp/contexto_etapa_0.json
 echo ""
 echo "Contexto carregado com sucesso!"
 ```
@@ -47,10 +47,10 @@ Alguma parte deve ser priorizada?
 **Comandos para revisar**:
 ```bash
 echo "=== RESUMO DA ANALISE ==="
-cat prompt_mestre/temp/contexto_etapa_0.json | grep -A 10 "tarefa_descricao"
-cat prompt_mestre/temp/contexto_etapa_0.json | grep -A 20 "arquivos_identificados"
-cat prompt_mestre/temp/contexto_etapa_0.json | grep -A 10 "funcoes_reuso"
-cat prompt_mestre/temp/contexto_etapa_0.json | grep -A 10 "riscos"
+cat acoes/temp/contexto_etapa_0.json | grep -A 10 "tarefa_descricao"
+cat acoes/temp/contexto_etapa_0.json | grep -A 20 "arquivos_identificados"
+cat acoes/temp/contexto_etapa_0.json | grep -A 10 "funcoes_reuso"
+cat acoes/temp/contexto_etapa_0.json | grep -A 10 "riscos"
 ```
 
 ---
@@ -347,7 +347,7 @@ PERFORMANCE:
 
 Ao finalizar, o assistente deve executar:
 ```bash
-cat > prompt_mestre/temp/contexto_etapa_1.json << 'EOFCONTEXT'
+cat > acoes/temp/contexto_etapa_1.json << 'EOFCONTEXT'
 {
   "etapa": 1,
   "versao": "3.0",
@@ -364,7 +364,7 @@ cat > prompt_mestre/temp/contexto_etapa_1.json << 'EOFCONTEXT'
 }
 EOFCONTEXT
 
-cat > prompt_mestre/temp/sessao_atual.json << 'EOFSESSAO'
+cat > acoes/temp/sessao_atual.json << 'EOFSESSAO'
 {
   "etapa_atual": 1,
   "etapa_concluida": true,
@@ -376,8 +376,8 @@ EOFSESSAO
 
 echo ""
 echo "Contexto salvo em:"
-echo "   - prompt_mestre/temp/contexto_etapa_1.json"
-echo "   - prompt_mestre/temp/sessao_atual.json"
+echo "   - acoes/temp/contexto_etapa_1.json"
+echo "   - acoes/temp/sessao_atual.json"
 ```
 
 ---
@@ -419,4 +419,4 @@ Proxima acao apos aprovacao:
 **Versao**: 3.0  
 **Compatibilidade**: Claude, GPT-4, Mistral, Gemini, todos os LLMs  
 **Proxima Etapa**: Implementacao (etapa_2_implementacao.md)  
-**Contexto Salvo**: prompt_mestre/temp/contexto_etapa_1.json
+**Contexto Salvo**: acoes/temp/contexto_etapa_1.json

@@ -146,7 +146,7 @@ ENABLE_SCHEDULER_WATCHDOG = config('ENABLE_SCHEDULER_WATCHDOG', default=True)
 
 ### 2.1 Novo runtime_config.json Completo
 
-Criei arquivo: `prompt_mestre/temp/runtime_config_completo_proposta.json`
+Criei arquivo: `acoes/temp/runtime_config_completo_proposta.json`
 
 **Estrutura Organizada**:
 ```json
@@ -489,7 +489,7 @@ cp config/runtime_config.json config/runtime_secrets.json
 ```
 
 **1.2 Expandir runtime_config.json**
-- Copiar proposta de `prompt_mestre/temp/runtime_config_completo_proposta.json`
+- Copiar proposta de `acoes/temp/runtime_config_completo_proposta.json`
 - Substituir secrets por placeholders `${VAR}`
 - Validar JSON syntax
 
@@ -728,6 +728,6 @@ A centralização em `runtime_config.json` é uma **excelente decisão arquitetu
 
 ---
 
-**Arquivo JSON Proposto**: `prompt_mestre/temp/runtime_config_completo_proposta.json`
+**Arquivo JSON Proposto**: `acoes/temp/runtime_config_completo_proposta.json`
 
 **Aguardando aprovação para prosseguir...**

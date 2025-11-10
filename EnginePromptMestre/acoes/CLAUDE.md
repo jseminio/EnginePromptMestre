@@ -25,11 +25,11 @@ Quando o Claude Code iniciar neste projeto, você DEVE **AUTOMATICAMENTE**:
 
 ### Como Funciona:
 
-O contexto entre etapas é salvo em arquivos JSON na pasta `prompt_mestre/temp/`.
+O contexto entre etapas é salvo em arquivos JSON na pasta `acoes/temp/`.
 
 **Arquivos de Contexto**:
 ```
-prompt_mestre/temp/
+acoes/temp/
 ├── sessao_atual.json          # Estado da sessão
 ├── contexto_etapa_0.json      # Análise
 ├── contexto_etapa_1.json      # Planejamento
@@ -43,8 +43,8 @@ prompt_mestre/temp/
 **CARREGAR CONTEXTO**:
 ```bash
 # Verificar se arquivo existe
-if [ -f prompt_mestre/temp/contexto_etapa_X.json ]; then
-  cat prompt_mestre/temp/contexto_etapa_X.json
+if [ -f acoes/temp/contexto_etapa_X.json ]; then
+  cat acoes/temp/contexto_etapa_X.json
 else
   echo "{}"  # Contexto vazio
 fi
@@ -53,7 +53,7 @@ fi
 **SALVAR CONTEXTO**:
 ```bash
 # Salvar JSON (método preferencial)
-cat > prompt_mestre/temp/contexto_etapa_X.json << 'EOFCONTEXT'
+cat > acoes/temp/contexto_etapa_X.json << 'EOFCONTEXT'
 {
   "etapa": X,
   "concluida": true,
@@ -67,8 +67,8 @@ EOFCONTEXT
 
 **LIMPAR CONTEXTO** (novo fluxo):
 ```bash
-rm -f prompt_mestre/temp/contexto_*.json
-rm -f prompt_mestre/temp/sessao_atual.json
+rm -f acoes/temp/contexto_*.json
+rm -f acoes/temp/sessao_atual.json
 ```
 
 ### Fluxo de Uso:
@@ -125,7 +125,7 @@ COMANDOS ESPECIAIS:
 /back      → Voltar para etapa anterior
 
 💡 Dica: Siga ordem sequencial para melhor qualidade
-💡 Contexto salvo automaticamente em prompt_mestre/temp/
+💡 Contexto salvo automaticamente em acoes/temp/
 
 Digite o número da etapa (0-4) ou comando:
 ```
@@ -284,7 +284,7 @@ npm run format
 
 ## 🎯 Modo Orquestrador
 
-Sistema especializado em `prompt_mestre/` com workflows por etapas:
+Sistema especializado em `acoes/` com workflows por etapas:
 
 | Arquivo | Propósito | Aprovação | Contexto |
 |---------|-----------|-----------|----------|
@@ -340,7 +340,7 @@ Git:
 - Scheduler = processo separado
 - Geração com lock em arquivo
 - Frontend: flags local/prod
-- **Contexto salvo em prompt_mestre/temp/**
+- **Contexto salvo em acoes/temp/**
 - **Sempre seguir workflow por etapas**
 - **Qualidade > Velocidade**
 

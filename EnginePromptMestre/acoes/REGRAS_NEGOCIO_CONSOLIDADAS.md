@@ -122,7 +122,7 @@ COMANDOS ESPECIAIS:
 /skip [n]  → Pular para etapa n (com aviso de riscos)
 
 💡 Dica: Siga a ordem sequencial (0→4) para melhor qualidade
-💡 Contexto salvo automaticamente em promptmestre/temp/
+💡 Contexto salvo automaticamente em acoes/temp/
 
 Digite o número da etapa (0-4) ou comando:
 ```
@@ -357,7 +357,7 @@ Digite o número da etapa (0-4) ou comando:
 ### 5.1 Estrutura de Arquivos
 
 ```
-promptmestre/temp/
+acoes/temp/
 ├── sessao_atual.json          # Estado da sessão
 ├── contexto_etapa_0.json      # Análise
 ├── contexto_etapa_1.json      # Planejamento
@@ -370,8 +370,8 @@ promptmestre/temp/
 
 #### Antes de carregar etapa
 ```bash
-if [ -f promptmestre/temp/contexto_etapa_X.json ]; then
-  cat promptmestre/temp/contexto_etapa_X.json
+if [ -f acoes/temp/contexto_etapa_X.json ]; then
+  cat acoes/temp/contexto_etapa_X.json
 else
   echo "{}"  # Contexto vazio
 fi
@@ -379,7 +379,7 @@ fi
 
 #### Após concluir etapa
 ```bash
-cat > promptmestre/temp/contexto_etapa_X.json << 'EOFCONTEXT'
+cat > acoes/temp/contexto_etapa_X.json << 'EOFCONTEXT'
 {
   "etapa": X,
   "versao": "3.0",
@@ -392,8 +392,8 @@ EOFCONTEXT
 
 #### Reset completo
 ```bash
-rm -f promptmestre/temp/contexto_*.json
-rm -f promptmestre/temp/sessao_atual.json
+rm -f acoes/temp/contexto_*.json
+rm -f acoes/temp/sessao_atual.json
 ```
 
 ### 5.3 Campos Obrigatórios em Contexto

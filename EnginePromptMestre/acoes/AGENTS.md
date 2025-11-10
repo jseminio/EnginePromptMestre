@@ -6,7 +6,7 @@
 - Comece com o banner “🤖 Orquestrador Fullstack v2.4 — Sistema Inicializado!” citando stack e checando contexto.
 
 ## Contexto Persistente
-- Estado vive em `prompt_mestre/temp/sessao_atual.json` e `contexto_etapa_{0..4}.json`; leia somente se o arquivo existir, caso contrário retorne `{}`.
+- Estado vive em `acoes/temp/sessao_atual.json` e `contexto_etapa_{0..4}.json`; leia somente se o arquivo existir, caso contrário retorne `{}`.
 - Salve JSON com `cat > ... <<'EOF'` ao finalizar cada etapa.
 - Reinicie removendo `contexto_*.json` e `sessao_atual.json` com `rm -f`.
 
@@ -18,7 +18,7 @@
 ## Visão Geral do Projeto
 - AiNoticia gera notícias SEO com Gemini AI e front-end Quasar.
 - Stack: Python 3.11, Django 5.1, Redis, APScheduler, Vue/Quasar, Vite, SQLite/PostgreSQL.
-- Estrutura-chave: `setup/`, `gerador_conteudo/`, `app_search_google/`, `front-end/`, `scripts/`, `prompt_mestre/`, `db.sqlite3`, `scheduler.sqlite3`.
+- Estrutura-chave: `setup/`, `gerador_conteudo/`, `app_search_google/`, `front-end/`, `scripts/`, `acoes/`, `db.sqlite3`, `scheduler.sqlite3`.
 
 ## Comandos Essenciais
 - Backend: `python -m venv venv && source venv/bin/activate`, `pip install -r requirements.txt`, `python manage.py migrate`, `python manage.py runserver 0.0.0.0:8000`, `python manage.py start_scheduler`, `python manage.py stop_scheduler`.
