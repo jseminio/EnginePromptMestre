@@ -1,34 +1,69 @@
-# ETAPA 4 — DEPLOY, VERSIONAMENTO E PROPAGAÇÃO — Curto
+# ETAPA 4 – DEPLOY E VERSIONAMENTO
 
-**Objetivo**: consolidar alterações com métricas e garantir versionamento adequado. Use `contexto.validacao`,
-`contexto.implementacao` e `contexto.planejamento` para montar release notes consistentes independentemente da LLM utilizada.
+**Versão**: 3.1 | **Objetivo**: liberar o release com rollback seguro e comunicação alinhada.
 
-## 📝 CHANGELOG (template)
+---
+
+## Checklist rápido
+1. Carregar contextos 0→3 (`context_guard` ligado).  
+2. Confirmar que QA aprovou (`VALIDADO`).  
+3. Preparar release (CHANGELOG, README, instruções de ativação/rollback, scripts).  
+4. Executar estratégia de deploy (Feature Flag, Blue-Green, Canary) e monitorar métricas/alertas.  
+5. Comunicar times/usuários (UX).  
+6. Salvar `acoes/temp/contexto_etapa_4.json` com release completo e registrar palavra `DEPLOYADO` / `PUSH CONFIRMADO`.
+
+---
+
+## Estrutura recomendada
+```markdown
+ETAPA 4: DEPLOY & VERSIONAMENTO
+--------------------------------------------------
+RELEASE
+- Versão/commit/tag/branch
+- Data/hora do deploy
+
+ESTRATÉGIA
+- Tipo (Flag/Blue-Green/Canary)
+- Passos executados
+- Rollback testado? [Sim/Não]
+
+OBSERVABILIDADE
+- Métricas (latência, erro, throughput)
+- Alertas acionados? [Sim/Não]
+
+DOCUMENTAÇÃO/COMUNICAÇÃO
+- CHANGELOG, README, runbook atualizados
+- Mensagens externas (UX) enviadas
+
+STATUS FINAL: [DEPLOYADO / ROLLBACK]
+--------------------------------------------------
 ```
-## [X.Y.Z] - DD/MM/AAAA
-- Adicionado: [feature]
-- Modificado: [arquivos]
-- Corrigido: [bugs]
-- Reuso: [APIs/funções evoluídas]
-- Gates: [flags/params] (default: legacy)
-- Métricas: LOC [+A/-R], Rotas [+N/~M], Duplicação 0
-```
 
-## 🔄 Git (exemplo)
+---
+
+## Persistência
 ```bash
-git status --short
-git add [arquivos do escopo]
-git commit -m "feat: [descr]; reuse:[X]; gates:[F1]; metrics:loc:+A/-R,rotas:+N/~M,dup:0"
-git push origin [branch]
+cat > acoes/temp/contexto_etapa_4.json <<'EOF'
+{
+  "etapa": 4,
+  "concluida": true,
+  "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+  "release": {...},
+  "deploy": {
+    "estrategia": "feature-flag",
+    "ambiente": "production",
+    "status": "sucesso"
+  },
+  "observabilidade": {...},
+  "documentacao": {...},
+  "rollback": {...},
+  "aprovacao": {"palavra": null}
+}
+EOF
 ```
-→ Abrir PR (qualquer plataforma) listando riscos, rollback e métricas finais.
-→ Registrar resumo em `contexto.deploy`:
-```
-release:
-  versao: "X.Y.Z"
-  changelog: "..."
-  branch: "..."
-  comandos_git: ["git add ...", "git commit ...", "git push ..."]
-  status_pr: ["aberto" | "mesclado" | "pendente"]
-```
-→ Confirmar com **“PUSH CONFIRMADO”** para concluir ou informar motivo para não prosseguir.
+
+---
+
+## Aprovação
+- Palavras válidas: **`DEPLOYADO`** ou **`PUSH CONFIRMADO`**.  
+- Atualize `sessao_atual.json` com `etapas_concluidas=[0,1,2,3,4]` e status `workflow_finalizado`.

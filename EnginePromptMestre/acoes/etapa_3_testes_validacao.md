@@ -1,54 +1,77 @@
-# ETAPA 3 — TESTES, VALIDAÇÃO E MEDIÇÕES — Curto
+# ETAPA 3 – TESTES E VALIDAÇÃO
 
-**Objetivo**: garantir qualidade e **provar** não-regressão, com **medições objetivas**. Consumir `contexto.implementacao`
-para validar exatamente o que foi entregue e registrar resultados consolidados em `contexto.validacao`.
+**Versão**: 3.1 | **Objetivo**: comprovar qualidade antes do deploy.
 
-## ✅ Checklist mínimo
-- [ ] Arquivos criados/modificados conforme plano
-- [ ] Gate default = legacy (compatibilidade preservada)
-- [ ] Testes Unit/Integração/E2E executados
-- [ ] Logs estruturados presentes
-- [ ] **Medições coletadas e anexadas**
-- [ ] Duplicação = **0** (falhar se > 0)
+---
 
-## 🧪 Comandos úteis
+## Checklist rápido
+1. Carregar contextos 0,1,2 + validar guardião.  
+2. Preparar ambiente (dependências, migrações, variáveis de teste).  
+3. Executar todos os testes planejados (unit, integração, regressão, performance, segurança).  
+4. Registrar métricas (cobertura ≥85%, complexidade ≤10, duplicação 0%, tempos/erros).  
+5. Validar logs/dashboards com feature OFF/ON.  
+6. Salvar `acoes/temp/contexto_etapa_3.json` e atualizar sessão.
+
+---
+
+## Template de relatório
+```markdown
+ETAPA 3: TESTES & MÉTRICAS
+--------------------------------------------------
+TESTES EXECUTADOS
+- Unitários: comando → resultado
+- Integração: comando → resultado
+- Regressão: comando → resultado
+- Performance/Segurança: comando → resultado
+
+MÉTRICAS
+- Cobertura: X%
+- Complexidade média: Y
+- Duplicação: Z%
+- Performance: [latência, throughput]
+
+OBSERVABILIDADE
+- Logs: [ok/erros]
+- Dashboards/alertas: [ok]
+
+INCIDENTES/RISCOS
+- [descrição | severidade | owner]
+
+DECISÃO: QUALITY GATE [APROVADO/REPROVADO]
+--------------------------------------------------
+```
+
+---
+
+## Persistência
 ```bash
-# Python + JS
-pytest -v
-npm run test:unit && npm run test:e2e
-
-# LOC tocado
-git fetch origin
-git diff --numstat origin/main...HEAD
-
-# Rotas (exemplos)
-rg -n "urlpatterns|path\(|re_path\(" -g "*/urls.py"
-rg -n "@app\.(get|post|put|patch|delete)"
-rg -n "@(app|.*_bp)\.route\("
-rg -n "app\.(get|post|put|patch|delete)\(|router\.(get|post|put|patch|delete)\("
-rg -n "createRouter\(|routes:\s*\["
-
-# Duplicação
-npx jscpd --threshold 0 --min-tokens 50 --reporters console,html --gitignore
-
-# Complexidade (opcional)
-radon cc -s -a .
-npx complexity-report -f plain .
-```
-## 🗒️ Saída consolidada
-```
-✅ TESTES E VALIDAÇÃO
-• Escopo testado: [lista]
-• Comandos executados: [cmd → status]
-• Métricas finais: LOC [+A/-R], Rotas [+N/~M], Duplicação [0]
-• Riscos remanescentes / pendências: [lista]
-
-📦 CONTEXTO PERSISTENTE → salvar como `contexto.validacao`
-• testes_executados: [comando → evidência]
-• metricas_finais: {loc:"+A/-R", rotas:"+N/~M", duplicacao:0}
-• pendencias: [lista]
-• recomendacao: ["pronto para deploy" | "ajustes necessários"]
+cat > acoes/temp/contexto_etapa_3.json <<'EOF'
+{
+  "etapa": 3,
+  "concluida": true,
+  "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+  "testes": {
+    "unitarios": {...},
+    "integracao": {...},
+    "regressao": {...},
+    "performance": {...},
+    "seguranca": {...}
+  },
+  "metricas": {
+    "cobertura": 0,
+    "complexidade": 0,
+    "duplicacao": 0,
+    "performance": {...}
+  },
+  "observabilidade": {...},
+  "quality_gate": "pendente",
+  "aprovacao": {"palavra": null}
+}
+EOF
 ```
 
-→ Confirmar com **“VALIDADO”** quando todos passarem.
-→ Após receber **VALIDADO**, perguntar: **"Deseja avançar para a Etapa 4 - Deploy/Versionamento? (Sim/Não)"**
+---
+
+## Aprovação
+- Palavra esperada: **`VALIDADO`**. Sem ela não há Etapa 4.  
+- Se algo falhar, registrar incidentes e instruir o orquestrador a retornar à etapa 2.
