@@ -37,8 +37,14 @@ O que voce quer implementar/modificar?
 echo "Detectando stack..."
 [ -f "requirements.txt" ] && echo "Python (requirements.txt)"
 [ -f "setup.py" ] && echo "Python Package"
+[ -f "pyproject.toml" ] && echo "Python (pyproject.toml)"
+[ -f "Pipfile" ] && echo "Python (Pipenv)"
+[ -f "poetry.lock" ] && echo "Python (Poetry)"
 grep -q "django" requirements.txt 2>/dev/null && echo "Django"
+[ -f "package-lock.json" ] && echo "Node.js (npm)"
 [ -f "package.json" ] && echo "Node.js (package.json)"
+[ -f "pnpm-lock.yaml" ] && echo "Node.js (pnpm)"
+[ -f "yarn.lock" ] && echo "Node.js (Yarn)"
 grep -q "vue" package.json 2>/dev/null && echo "Vue"
 grep -q "react" package.json 2>/dev/null && echo "React"
 [ -f "db.sqlite3" ] && echo "SQLite"
@@ -175,6 +181,8 @@ npx jscpd --threshold 0 --gitignore 2>/dev/null || echo "jscpd nao disponivel (n
 ```bash
 find . -name "*test*.py" | wc -l
 ```
+
+> 💾 **Importante**: Capture os valores de baseline diretamente no JSON de contexto (ex.: `contexto_etapa_0.json`) usando `jq` ou redirecionamento estruturado para manter as evidencias acessiveis nas etapas seguintes.
 
 ---
 

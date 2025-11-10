@@ -40,18 +40,28 @@ Alguma parte deve ser priorizada?
 
 ---
 
-## PROCESSO DE PLANEJAMENTO (8 Passos)
+## PROCESSO DE PLANEJAMENTO (9 Passos)
 
 ### PASSO 1: Revisar Insumos da Analise
 
 **Comandos para revisar**:
 ```bash
 echo "=== RESUMO DA ANALISE ==="
-cat prompt_mestre/temp/contexto_etapa_0.json | grep -A 10 "tarefa_descricao"
-cat prompt_mestre/temp/contexto_etapa_0.json | grep -A 20 "arquivos_identificados"
-cat prompt_mestre/temp/contexto_etapa_0.json | grep -A 10 "funcoes_reuso"
-cat prompt_mestre/temp/contexto_etapa_0.json | grep -A 10 "riscos"
+if command -v jq >/dev/null 2>&1; then
+  jq '{
+        tarefa: .tarefa_descricao,
+        arquivos: .arquivos_identificados,
+        funcoes_reuso: .funcoes_reuso,
+        riscos: .riscos,
+        metricas_baseline: .metricas_baseline
+      }' prompt_mestre/temp/contexto_etapa_0.json
+else
+  echo "jq nao encontrado — exibindo conteudo bruto para revisao manual"
+  cat prompt_mestre/temp/contexto_etapa_0.json
+fi
 ```
+
+> 💡 **Dica**: use `jq '.arquivos_identificados[] | {path: .arquivo, motivo: .motivo}'` para inspecionar itens especificos sem depender de `grep -A`.
 
 ---
 
@@ -75,7 +85,45 @@ OBJETIVO 1: Adicionar cache Redis nos relatorios
 
 ---
 
-### PASSO 3: Estrategia de Entrega (Fases/Trilhas)
+### PASSO 3: Observabilidade e Requisitos Nao Funcionais
+
+**Checklist recomendado**:
+```bash
+echo "Planejando observabilidade e NFRs..."
+if command -v jq >/dev/null 2>&1; then
+  jq '{
+        logs_existentes: .observabilidade.logs,
+        metricas_existentes: .observabilidade.metricas,
+        alertas_existentes: .observabilidade.alertas
+      } // {"observabilidade": "nao mapeada na etapa 0"}' \
+    prompt_mestre/temp/contexto_etapa_0.json
+fi
+```
+
+**Itens a definir**:
+```
+- Logs necessários (estruturados, níveis)
+- Métricas e SLOs (latência, throughput, filas)
+- Alarmes/alertas (Redis indisponível, falha na geração)
+- Tracing/trilhas de auditoria
+- Restrições de segurança/performance herdadas
+```
+
+**Template rápido**:
+```
+OBSERVABILIDADE:
+  Logs: [ex.: adicionar logger para cache hits/misses]
+  Métricas: [ex.: tempo médio generate_report]
+  Alertas: [ex.: alerta Redis indisponível > 5min]
+NFRs:
+  Performance: [ex.: resposta < 500ms]
+  Segurança: [ex.: tokens não logados]
+  Confiabilidade: [ex.: fallback em 3 tentativas]
+```
+
+---
+
+### PASSO 4: Estrategia de Entrega (Fases/Trilhas)
 
 **Entrega Incremental (Recomendada)**:
 ```
@@ -102,7 +150,7 @@ FASE 4: Ativacao Gradual
 
 ---
 
-### PASSO 4: Mapear Artefatos (Arquivos)
+### PASSO 5: Mapear Artefatos (Arquivos)
 
 **Exemplo**:
 ```
@@ -127,7 +175,7 @@ LER/APOIAR-SE:
 
 ---
 
-### PASSO 5: Estrategia de Reuso
+### PASSO 6: Estrategia de Reuso
 
 **Template**:
 ```
@@ -156,7 +204,7 @@ REUSO 1: app_search_google/cache.py:10-25 -> RedisCache
 
 ---
 
-### PASSO 6: Eliminacao de Duplicidades
+### PASSO 7: Eliminacao de Duplicidades
 
 **Template**:
 ```
@@ -173,7 +221,7 @@ DUPLICACAO 1: [arquivo1] <-> [arquivo2]
 
 ---
 
-### PASSO 7: Feature Flags e Backward Compatibility
+### PASSO 8: Feature Flags e Backward Compatibility
 
 **Template**:
 ```
@@ -190,7 +238,7 @@ GATE 1: FEATURE_[NOME]
 
 ---
 
-### PASSO 8: Planejar Testes
+### PASSO 9: Planejar Testes
 
 **Categorias necessarias**:
 
@@ -354,13 +402,67 @@ cat > prompt_mestre/temp/contexto_etapa_1.json << 'EOFCONTEXT'
   "concluida": true,
   "timestamp": "2025-11-02T16:00:00Z",
   "baseado_em_etapa_0": true,
-  "objetivos": [],
-  "estrategia_entrega": {},
-  "entregaveis": {},
-  "reuse_map": [],
-  "gates": [],
-  "testes_planejados": {},
-  "metricas_planejadas": {}
+  "objetivos": [
+    {
+      "descricao": "Adicionar cache Redis nos relatorios",
+      "criterio_aceite": "tempo_resposta_ms <= 500",
+      "prioridade": "Alta",
+      "origem_analise": "funcoes_reuso.RedisCache"
+    }
+  ],
+  "estrategia_entrega": {
+    "fase_1": {
+      "nome": "Preparacao e Infraestrutura",
+      "atividades": ["Criar cache_service.py", "Adicionar FEATURE_REPORT_CACHE", "Preparar testes"]
+    },
+    "fase_2": {
+      "nome": "Implementacao Core",
+      "atividades": ["Integrar cache", "Reutilizar RedisCache", "Testes unitarios"]
+    }
+  },
+  "entregaveis": {
+    "criar": [
+      {"arquivo": "gerador_conteudo/cache_service.py", "proposito": "Servico centralizado de cache"}
+    ],
+    "modificar": [
+      {"arquivo": "gerador_conteudo/reports.py", "motivo": "Aplicar feature flag"},
+      {"arquivo": "setup/settings.py", "motivo": "Registrar FEATURE_REPORT_CACHE"}
+    ]
+  },
+  "observabilidade": {
+    "logs": ["registrar cache hits/misses"],
+    "metricas": ["tempo_medio_generate_report"],
+    "alertas": ["redis_indisponivel_5min"],
+    "nfrs": {
+      "performance": "<=500ms",
+      "confiabilidade": "fallback banco quando Redis falhar"
+    }
+  },
+  "reuse_map": [
+    {
+      "origem": "app_search_google/cache.py:RedisCache",
+      "estrategia": "Compor",
+      "compatibilidade": "Nao alterar assinatura"
+    }
+  ],
+  "gates": [
+    {
+      "nome": "FEATURE_REPORT_CACHE",
+      "valor_padrao": false,
+      "rollback": "setar False e limpar cache"
+    }
+  ],
+  "testes_planejados": {
+    "unitarios": ["test_cache_service.py"],
+    "integracao": ["test_report_integration.py"],
+    "performance": ["test_report_performance.py"],
+    "regressao": "executar suite existente"
+  },
+  "metricas_planejadas": {
+    "loc_estimado": 150,
+    "cache_hit_rate_meta": ">=70%",
+    "tempo_resposta_ms_meta": 500
+  }
 }
 EOFCONTEXT
 
