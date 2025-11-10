@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Schema simplificado para arquivos de contexto (etapas 0-4) e sessao_atual do Engine Prompt Mestre.",
+  "contexto": {
+    "required": ["etapa", "timestamp"],
+    "numeric": ["etapa"],
+    "boolean": ["concluida"],
+    "string": ["timestamp"],
+    "recommended": [
+      "objetivos",
+      "estrategia_entrega",
+      "artefatos",
+      "testes_planejados",
+      "metricas_planejadas"
+    ],
+    "notes": "Qualquer outro campo e permitido para manter flexibilidade, desde que o JSON seja valido."
+  },
+  "sessao": {
+    "required": ["etapa_atual", "proxima_etapa", "timestamp"],
+    "numeric": ["etapa_atual", "proxima_etapa"],
+    "boolean": ["etapa_concluida", "aprovacao_recebida"],
+    "string": ["timestamp"],
+    "recommended": ["contextos_disponiveis", "aprovacao", "proxima_acao_recomendada"],
+    "notes": "Sessao deve refletir estado consolidado do workflow no momento do salvamento."
+  },
+  "backup": {
+    "folder": "promptmestre/temp/backups",
+    "retencao": 5,
+    "timestamp_format": "%Y%m%dT%H%M%SZ"
+  }
+}

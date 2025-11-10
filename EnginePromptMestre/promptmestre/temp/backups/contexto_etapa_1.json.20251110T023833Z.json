@@ -1,0 +1,310 @@
+{
+  "etapa": 1,
+  "versao_template": "3.0",
+  "concluida": true,
+  "timestamp": "2025-11-10T02:16:32Z",
+  "baseado_em_etapa_0": true,
+  "entradas_usuario": {
+    "escopo_confirmado": "Sim - usuário: \"O escopo da análise feito na Etapa 0 permanece correto!\"",
+    "restricoes_adicionais": "Nao informado; assumir sem novas restricoes"
+  },
+  "objetivos": [
+    {
+      "id": "OBJ1",
+      "descricao": "Blindar persistencia dos arquivos de contexto e sessao com validacao + backup automatico.",
+      "vinculo_com_analise": "Risco 2 - Contexto corrompido ou perdido (promptmestre/temp/contexto_etapa_0.json:136)",
+      "criterios_aceite": [
+        "Validar JSON contra schema antes de salvar/carregar",
+        "Gerar backup incremental em promptmestre/temp/backups/ com timestamp",
+        "Documentar procedimento /reset com limpeza segura"
+      ],
+      "prioridade": "Alta"
+    },
+    {
+      "id": "OBJ2",
+      "descricao": "Unificar menus, mensagens de boot e gates do orquestrador em fonte unica reutilizavel por todos os agentes.",
+      "vinculo_com_analise": "Risco 1 - Duplicacao promptmestre vs EnginePromptMestre (promptmestre/temp/contexto_etapa_0.json:128)",
+      "criterios_aceite": [
+        "Menu exibido a partir de template versionado",
+        "Checklists e comandos especiais mantidos em um unico arquivo fonte",
+        "Agentes secundarios consomem o mesmo template via include"
+      ],
+      "prioridade": "Alta"
+    },
+    {
+      "id": "OBJ3",
+      "descricao": "Definir estrategia de testes/métricas replicavel para os blueprints (anti-alucinacao + QA).",
+      "vinculo_com_analise": "Risco 3 - Falta de testes automatizados (promptmestre/temp/contexto_etapa_0.json:144)",
+      "criterios_aceite": [
+        "Plano de testes cobrindo unitarios, integracao, regressao e observabilidade",
+        "Scripts/documentos de teste versionados em promptmestre/tests",
+        "Checklist de validacao obrigatorio antes do aprovacao PLANEJADO"
+      ],
+      "prioridade": "Media"
+    },
+    {
+      "id": "OBJ4",
+      "descricao": "Formalizar uso de feature flags e rollback documentado para cada mudanca do orchestrator.",
+      "vinculo_com_analise": "Funcao de reuso Feature Flags Pattern (promptmestre/temp/contexto_etapa_0.json:83)",
+      "criterios_aceite": [
+        "Cada entrega vinculada a FEATURE_* com valor padrao False",
+        "Plano de rollback descrito no mesmo bloco",
+        "Telemetria registrando quando flag altera estado"
+      ],
+      "prioridade": "Media"
+    }
+  ],
+  "estrategia_entrega": [
+    {
+      "fase": "Fase 1 - Guardas de Contexto",
+      "objetivo": "Validar, versionar e fazer backup dos JSONs de sessao/contexto",
+      "atividades_chave": [
+        "Criar schema JSON reutilizavel e script context_guard.sh",
+        "Introduzir pasta promptmestre/temp/backups",
+        "Adicionar chamada automatica do guard no boot do orquestrador"
+      ],
+      "dependencias": ["OBJ1"],
+      "saidas": [
+        "promptmestre/temp/context_schema.json",
+        "EnginePromptMestre/scripts/context_guard.sh",
+        "Atualizacao do README de temp"
+      ]
+    },
+    {
+      "fase": "Fase 2 - Orquestracao Unificada",
+      "objetivo": "Centralizar menus, mensagens de boot e comandos especiais",
+      "atividades_chave": [
+        "Extrair template de menu para EnginePromptMestre/agents/workflow.md",
+        "Atualizar EnginePromptMestre/agents/orchestrator.md para consumir template",
+        "Alinhar promptmestre/mestre_orquestrador.md e CLAUDE.md"
+      ],
+      "dependencias": ["OBJ2"],
+      "saidas": [
+        "Template markdown compartilhado",
+        "Mapa de status com fonte unica",
+        "Checklist de aprovacao sincronizado"
+      ]
+    },
+    {
+      "fase": "Fase 3 - Observabilidade e QA",
+      "objetivo": "Garantir rastreabilidade e testes multiplos",
+      "atividades_chave": [
+        "Criar promptmestre/tests/orchestrator_smoke.md",
+        "Definir comandos bash para validar cada flag",
+        "Instrumentar logs resumidos de execucao"
+      ],
+      "dependencias": ["OBJ3", "OBJ4"],
+      "saidas": [
+        "Checklist de testes",
+        "Scripts de validacao",
+        "Secao de metricas em REGRAS_NEGOCIO_CONSOLIDADAS.md"
+      ]
+    },
+    {
+      "fase": "Fase 4 - Ativacao Gradual e Documentacao",
+      "objetivo": "Disponibilizar melhorias com rollback seguro",
+      "atividades_chave": [
+        "Habilitar feature flags gradualmente",
+        "Atualizar INDEX.md e AGENTS.md com novos fluxos",
+        "Salvar changelog e plano de rollback"
+      ],
+      "dependencias": ["OBJ2", "OBJ4"],
+      "saidas": [
+        "Procedimento de rollout",
+        "CHANGELOG/registro de versao",
+        "Comando /status atualizado"
+      ]
+    }
+  ],
+  "artefatos": {
+    "criar": [
+      {
+        "arquivo": "EnginePromptMestre/scripts/context_guard.sh",
+        "proposito": "Validar JSON, criar backup e reportar status ao orquestrador",
+        "detalhes": "Shell script reutilizavel acionado pelo boot (FEATURE_CONTEXT_GUARD)"
+      },
+      {
+        "arquivo": "promptmestre/temp/context_schema.json",
+        "proposito": "Schema unico para contexto_etapa_X.json e sessao_atual.json",
+        "detalhes": "Amarrar campos obrigatorios + tipos"
+      },
+      {
+        "arquivo": "promptmestre/tests/orchestrator_smoke.md",
+        "proposito": "Roteiro de validacao manual/automatica das etapas 0→4",
+        "detalhes": "Inclui comandos bash e criterios de aprovacao"
+      }
+    ],
+    "modificar": [
+      {
+        "arquivo": "EnginePromptMestre/agents/orchestrator.md",
+        "linhas_estimadas": "10-220",
+        "motivo": "Consumir template unico de menu, registrar logs do guard e feature flags"
+      },
+      {
+        "arquivo": "EnginePromptMestre/agents/workflow.md",
+        "linhas_estimadas": "150-320",
+        "motivo": "Centralizar template do menu, salvar contexto etapa 1 e instrucoes de aprovacao"
+      },
+      {
+        "arquivo": "promptmestre/mestre_orquestrador.md",
+        "linhas_estimadas": "1-170",
+        "motivo": "Referenciar novo template e remover duplicacao"
+      },
+      {
+        "arquivo": "promptmestre/temp/README.md",
+        "linhas_estimadas": "1-60",
+        "motivo": "Documentar schema, backups e novas flags"
+      }
+    ],
+    "consultar": [
+      "promptmestre/CLAUDE.md",
+      "EnginePromptMestre/REGRAS_NEGOCIO_CONSOLIDADAS.md",
+      "promptmestre/etapa_2_implementacao.md",
+      "EnginePromptMestre/agents/qa.md"
+    ]
+  },
+  "reuse_map": [
+    {
+      "fonte": "promptmestre/CLAUDE.md:30-72",
+      "destino": "EnginePromptMestre/scripts/context_guard.sh",
+      "estrategia": "Extrair comandos de carregar/salvar contexto para script reutilizavel",
+      "compatibilidade": [
+        "Nao alterar assinatura dos arquivos existentes",
+        "Fallback para echo '{}' quando schema falhar"
+      ],
+      "testes": ["test_context_guard_valid_json", "test_context_guard_backup_created"]
+    },
+    {
+      "fonte": "EnginePromptMestre/agents/workflow.md:150-238",
+      "destino": "Template de menu compartilhado",
+      "estrategia": "Referenciar bloco unico via include ou seccao importada",
+      "compatibilidade": [
+        "Manter comandos especiais /status,/context,/reset",
+        "Permitir override apenas de nome do projeto e stack"
+      ],
+      "testes": ["test_boot_menu_render", "test_menu_status_sync"]
+    },
+    {
+      "fonte": "promptmestre/temp/README.md:1-35",
+      "destino": "Documentacao de backups",
+      "estrategia": "Estender README existente com novas subpastas",
+      "compatibilidade": ["Nao mover arquivos temporarios existentes"]
+    }
+  ],
+  "duplicidades": [
+    {
+      "entre": ["EnginePromptMestre/agents/orchestrator.md", "promptmestre/mestre_orquestrador.md"],
+      "descricao": "Menus e checklists identicos mantidos em dois arquivos",
+      "acao": [
+        "Extrair template para EnginePromptMestre/agents/workflow.md",
+        "Referenciar via include/snippet nos dois arquivos"
+      ],
+      "garantia": ["Snapshot de ambos arquivos antes da remocao", "Teste manual de boot"]
+    },
+    {
+      "entre": ["promptmestre/etapa_0_analise.md", "EnginePromptMestre/agents/workflow.md"],
+      "descricao": "Instrucao duplicada de salvamento/carregamento",
+      "acao": ["Apontar para schema/guard unico", "Remover comandos divergentes"],
+      "garantia": ["Executar rg para validar ausencia de comandos antigos"]
+    }
+  ],
+  "gates": [
+    {
+      "flag": "FEATURE_CONTEXT_GUARD",
+      "valor_padrao": false,
+      "escopo": "Persistencia de contexto",
+      "condicao_ativacao": "Ativar apos validar script em ambiente local",
+      "rollback": "Setar False e restaurar backups mais recentes"
+    },
+    {
+      "flag": "FEATURE_MENU_TELEMETRIA",
+      "valor_padrao": false,
+      "escopo": "Logs e exibicao de metricas no menu",
+      "condicao_ativacao": "Habilitar apos concluir fase 2",
+      "rollback": "Desativar flag e ocultar bloco de metricas"
+    },
+    {
+      "flag": "FEATURE_STRICT_APPROVALS",
+      "valor_padrao": true,
+      "escopo": "Gates AN/PL/IM/VA/DP",
+      "condicao_ativacao": "Mantido sempre on; so muda se modo legado for necessario",
+      "rollback": "Configurar para false para permitir fluxo rapido"
+    }
+  ],
+  "testes_planejados": {
+    "unitarios": [
+      {
+        "nome": "test_context_guard_valid_json",
+        "descricao": "Simula JSON valido e garante saida OK",
+        "comando": "bash tests/context_guard_test.sh --case valid",
+        "depende_de": "FEATURE_CONTEXT_GUARD"
+      },
+      {
+        "nome": "test_context_guard_backup_created",
+        "descricao": "Verifica criacao de arquivo em temp/backups",
+        "comando": "bash tests/context_guard_test.sh --case backup",
+        "depende_de": "FEATURE_CONTEXT_GUARD"
+      }
+    ],
+    "integracao": [
+      {
+        "nome": "test_boot_menu_render",
+        "descricao": "Executa orquestrador e verifica menu unico",
+        "comando": "bash tests/orchestrator_menu.sh",
+        "depende_de": "FEATURE_MENU_TELEMETRIA"
+      }
+    ],
+    "regressao": [
+      {
+        "nome": "test_legacy_flow_sem_flags",
+        "descricao": "Garante que fluxo 0→4 funciona com todas as novas flags em False",
+        "comando": "bash tests/legacy_flow.sh",
+        "depende_de": "FEATURE_STRICT_APPROVALS"
+      }
+    ],
+    "observabilidade": [
+      {
+        "nome": "metric_boot_latency",
+        "descricao": "Mede tempo entre comando cat e exibicao do menu",
+        "metrica": "<= 1s",
+        "coleta": "script time -p bash start_orchestrator.sh"
+      }
+    ]
+  },
+  "metricas_planejadas": {
+    "codigo": {
+      "loc_novo_max": 250,
+      "duplicacao_max": "0%",
+      "comentarios_significativos": "Somente acima de blocos complexos"
+    },
+    "operacao": {
+      "tempo_boot_menu_segundos": "<=1",
+      "tempo_salvar_contexto_ms": "<=50",
+      "backups_retidos": 5
+    },
+    "qualidade": {
+      "cobertura_testes_novos": ">=85% (scripts/bash + checklists)",
+      "incidentes_contexto": "0",
+      "tempo_resposta_duvidas": "< 5m (documentado no README)"
+    }
+  },
+  "dependencias": {
+    "arquivos_existentes": [
+      "promptmestre/temp/contexto_etapa_0.json",
+      "EnginePromptMestre/agents/workflow.md",
+      "promptmestre/CLAUDE.md"
+    ],
+    "comandos": ["bash", "rg", "jq"],
+    "decisoes_previas": ["Aprovacao ANALISADO registrada em sessao_atual.json"]
+  },
+  "aprovacao_requerida": {
+    "palavras_validas": ["PLANEJADO", "DE ACORDO", "APROVAR", "OK"],
+    "status": "Pendente",
+    "observacoes": "Aguardando confirmacao do usuario para avancar para Etapa 2"
+  },
+  "proxima_etapa": {
+    "numero": 2,
+    "nome": "Implementacao",
+    "condicao": "Executar somente apos aprovacao do planejamento"
+  }
+}

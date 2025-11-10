@@ -20,6 +20,42 @@ ANALISADO               PLANEJADO                  IMPLEMENTADO              VAL
 
 ---
 
+## TEMPLATE COMPARTILHADO: MENU + STATUS
+
+Todos os agentes devem usar **o mesmo bloco de boot** abaixo para exibir projeto, stack, branch, status atual e comandos especiais. Ajuste apenas os campos entre colchetes de acordo com o contexto carregado.
+
+```bash
+cat <<'MENU'
+🤖 Orquestrador Fullstack v2.4 — Sistema Inicializado
+
+Projeto: [nome_do_projeto]
+Stack: [stack_detectada]
+Branch: [git_branch]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📍 Status: [status derivado de promptmestre/temp/sessao_atual.json]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ETAPAS DISPONÍVEIS (Recomendado: 0→1→2→3→4):
+[0] 📊 Análise Contextual — Status: [status_etapa_0]
+[1] 📌 Planejamento — Status: [status_etapa_1]
+[2] 🧱 Implementação — Status: [status_etapa_2]
+[3] ✅ Testes e Métricas — Status: [status_etapa_3]
+[4] 🚀 Deploy e CHANGELOG — Status: [status_etapa_4]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+COMANDOS ESPECIAIS:
+/status /context /reset /help /back /skip [n]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MENU
+```
+
+> **FEATURE_MENU_TELEMETRIA**: quando habilitada, adicione logo após o bloco de status um resumo de métricas (tempo de boot, backups existentes) coletado pelos scripts descritos na Etapa 2. Quando desativada (default), mantenha o menu minimalista.
+
+Antes de renderizar o menu, execute opcionalmente (via `FEATURE_CONTEXT_GUARD=true`) o script `EnginePromptMestre/scripts/context_guard.sh --file <arquivo>` para validar/registrar backups dos JSONs sensíveis.
+
+---
+
 ## ETAPA 0: ANÁLISE CONTEXTUAL
 
 ### Objetivo
@@ -242,6 +278,8 @@ cat promptmestre/temp/contexto_etapa_1.json
 - **PROVÁVEL**: Mostrar código REAL sempre
 - **REUSO-PRIMEIRO**: Buscar existente antes de criar
 - **BACKWARD-COMPATIBLE**: Feature flags + legacy funcionando
+
+> Roteiro recomendado de validação: `promptmestre/tests/orchestrator_smoke.md`.
 
 #### 4. Template de Saída
 ```markdown

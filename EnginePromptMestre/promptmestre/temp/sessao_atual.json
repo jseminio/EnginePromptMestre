@@ -1,0 +1,30 @@
+{
+  "etapa_atual": 2,
+  "etapa_concluida": true,
+  "proxima_etapa": 3,
+  "timestamp": "2025-11-10T02:28:06Z",
+  "etapas_concluidas": [0, 1, 2],
+  "projeto": "promptmestre",
+  "tarefa": "Implementação do plano (context guard, menu unificado, QA kit)",
+  "contextos_disponiveis": [
+    "promptmestre/temp/contexto_etapa_0.json",
+    "promptmestre/temp/contexto_etapa_1.json",
+    "promptmestre/temp/contexto_etapa_2.json"
+  ],
+  "aprovacao_recebida": false,
+  "aprovacao": {
+    "palavra": null,
+    "timestamp": null,
+    "observacoes": "Aguardando confirmação IMPLEMENTADO/OK para avançar à Etapa 3"
+  },
+  "feature_flags": {
+    "FEATURE_CONTEXT_GUARD": "Disponível (default false)",
+    "FEATURE_MENU_TELEMETRIA": "Documentada (default false)",
+    "FEATURE_STRICT_APPROVALS": "Ativa"
+  },
+  "evidencias": [
+    "Backup criado: promptmestre/temp/backups/contexto_etapa_1.json.20251110T022722Z.json",
+    "Teste executado: FEATURE_CONTEXT_GUARD=true ... --force"
+  ],
+  "proxima_acao_recomendada": "Executar Etapa 3 seguindo promptmestre/tests/orchestrator_smoke.md + template etapa_3"
+}

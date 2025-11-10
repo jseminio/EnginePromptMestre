@@ -65,6 +65,13 @@ else
 fi
 ```
 
+**PASSO 1.1 (opcional)**: Se `FEATURE_CONTEXT_GUARD=true`, validar imediatamente os arquivos críticos:
+```bash
+EnginePromptMestre/scripts/context_guard.sh --file promptmestre/temp/sessao_atual.json
+EnginePromptMestre/scripts/context_guard.sh --file promptmestre/temp/contexto_etapa_1.json
+```
+> Use `--force` quando precisar executar mesmo com a flag desligada.
+
 **PASSO 2**: ANALISAR resultado:
 - Se retornou `{}` ou arquivo não existe → Ir para PASSO 3
 - Se retornou JSON com dados → Ir para PASSO 4
@@ -80,6 +87,8 @@ fi
 **REGRA CRÍTICA**: NÃO pausar antes de executar o comando bash. Execute-o IMEDIATAMENTE ao carregar este arquivo.
 
 ### Mensagem de Boot (Exibir Automaticamente)
+
+> Utilize SEMPRE o snippet documentado em `EnginePromptMestre/agents/workflow.md` (seção **Template Compartilhado: Menu + Status**) para manter consistência entre todos os agentes.
 ```text
 🤖 Orquestrador Fullstack v2.4 — Sistema Inicializado
 
@@ -133,6 +142,10 @@ COMANDOS ESPECIAIS:
 
 💡 Dica: Siga a ordem sequencial (0→4) para melhor qualidade
 💡 Contexto salvo automaticamente em promptmestre/temp/
+💡 Feature flags disponíveis:
+    - FEATURE_CONTEXT_GUARD (default: False) → valida JSON + backups
+    - FEATURE_MENU_TELEMETRIA (default: False) → expõe métricas no menu
+    - FEATURE_STRICT_APPROVALS (default: True) → mantém gates obrigatórios
 
 Digite o número da etapa (0-4) ou comando:
 ```
