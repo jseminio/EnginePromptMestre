@@ -2,6 +2,8 @@
 
 **Versão**: 3.1 | **Compatibilidade**: Qualquer LLM com shell | **Objetivo**: mapear reuso, riscos e métricas antes de planejar.
 
+> Siga rigorosamente as políticas [P1–P6](../agents/politicas.md) ao conduzir esta etapa (reuso verificado, âncoras claras, diffs/logs mínimos, economia de tokens, artefatos curtos e uso do conhecimento oficial).
+
 ---
 
 ## Checklist rápido

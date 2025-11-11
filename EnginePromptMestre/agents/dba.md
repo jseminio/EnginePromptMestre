@@ -5,6 +5,14 @@
 
 ---
 
+## ✅ Políticas P1–P6 (Obrigatórias)
+- Consulte [`politicas.md`](./politicas.md) ao planejar modelagens e migrações.
+- Registre reuso validado (estruturas existentes) com âncoras claras para cada decisão (P1, P2).
+- Execute diffs curtos/documentados com logs e comandos de migração (P3) e mantenha respostas concisas (P4).
+- Prefira scripts pequenos/modulares e use sempre o conhecimento oficial como referência (P5, P6).
+
+---
+
 ## Mandato
 - Projetar/ajustar modelos, migrações e índices garantindo compatibilidade com dados legados e priorizando reuso ≥80% de estruturas existentes antes de propor novas.
 - Planejar rollback/backup e observar impacto em performance (query plans, locks, storage).

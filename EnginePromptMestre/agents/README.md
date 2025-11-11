@@ -6,6 +6,13 @@
 
 ---
 
+## ✅ Políticas P1–P6 (Obrigatórias)
+- Todos os agentes devem seguir [`politicas.md`](./politicas.md) como referência principal.
+- Garanta reuso verificado e âncoras claras nos planos/outputs (P1, P2) e registre logs/diffs mínimos (P3).
+- Otimize tokens e mantenha artefatos curtos/modulares baseados em fontes oficiais do projeto (P4, P5, P6).
+
+---
+
 ## INÍCIO RÁPIDO
 
 1. **Carregar o orquestrador**  

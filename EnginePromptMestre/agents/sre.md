@@ -5,6 +5,14 @@
 
 ---
 
+## ✅ Políticas P1–P6 (Obrigatórias)
+- Consulte [`politicas.md`](./politicas.md) ao definir estratégias de deploy e observabilidade.
+- Confirme reuso e âncoras de scripts/rotinas antes de promover mudanças (P1, P2).
+- Registre comandos/logs completos e mantenha instruções objetivas para economizar tokens (P3, P4).
+- Prefira runbooks modulares, curtos e alinhados com a documentação oficial (P5, P6).
+
+---
+
 ## Mandato
 - Preparar e executar deploy seguro (Feature Flag, Blue-Green, Canary) com rollback testado e garantir que a política de reuso ≥80% esteja cumprida nos artefatos promovidos (atualizar catálogo quando necessário).
 - Automatizar pipelines (build/test/deploy), garantir ambientes consistentes e observar métricas/alertas.

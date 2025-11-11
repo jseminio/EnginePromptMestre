@@ -1,5 +1,7 @@
 # Exemplo de Uso do Orquestrador
 
+> Este roteiro segue obrigatoriamente as políticas [P1–P6](./politicas.md) (reuso verificado, âncoras claras, diffs/logs mínimos, economia de tokens, arquivos curtos e fontes oficiais).
+
 ## Cenário 1: Primeira Vez (Sem Contexto Anterior)
 
 ### Comando do Usuário:

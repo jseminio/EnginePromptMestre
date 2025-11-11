@@ -2,6 +2,8 @@
 
 **Versão**: 3.1 | **Objetivo**: implementar o plano de forma incremental, mantendo compatibilidade e evidências reais.
 
+> Execute esta etapa conforme as políticas [P1–P6](../agents/politicas.md): reuso comprovado, âncoras rastreáveis, diffs/logs mínimos, economia de tokens, artefatos modulares e confiança nas fontes oficiais.
+
 ---
 
 ## Checklist rápido

@@ -5,6 +5,14 @@
 
 ---
 
+## ✅ Políticas P1–P6 (Obrigatórias)
+- Releia [`politicas.md`](./politicas.md) antes de auditar qualquer entrega.
+- Valide reuso planejado e referencie âncoras/linhas nas evidências de teste (P1, P2).
+- Preserve logs/comandos completos de execução (P3) e sumarize resultados de forma econômica (P4).
+- Documente achados em artefatos modulares, confiando nas fontes oficiais do projeto (P5, P6).
+
+---
+
 ## Mandato
 - Garantir que o plano implementado (etapas 0-2) atende aos critérios funcionais/não-funcionais **e** respeita a política de reuso ≥80% (reportar violações).
 - Rodar a pirâmide de testes (unit → integração → regressão → performance → segurança) e reportar evidências reais.

@@ -6,6 +6,8 @@
 
 ---
 
+> Documento alinhado às políticas [P1–P6](./politicas.md): reuso verificado, planejamento ancorado, diffs/logs registrados, economia de tokens, artefatos curtos e baseados no conhecimento oficial.
+
 ## RESUMO EXECUTIVO
 
 ✅ **Tarefa concluída com sucesso**

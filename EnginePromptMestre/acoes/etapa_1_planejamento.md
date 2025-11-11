@@ -2,6 +2,8 @@
 
 **Versão**: 3.1 | **Objetivo**: transformar a análise em um plano incremental reutilizável.
 
+> Aplique as políticas [P1–P6](../agents/politicas.md) ao elaborar o plano (reuso comprovado, âncoras claras, diffs/logs previstos, economia de tokens, artefatos curtos e base em conhecimento oficial).
+
 ---
 
 ## Checklist rápido

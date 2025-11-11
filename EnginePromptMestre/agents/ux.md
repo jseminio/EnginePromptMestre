@@ -5,6 +5,14 @@
 
 ---
 
+## ✅ Políticas P1–P6 (Obrigatórias)
+- Revise [`politicas.md`](./politicas.md) antes de redigir comunicações ou ajustes de UX.
+- Garanta reuso de textos/templates com âncoras de origem rastreáveis (P1, P2).
+- Registre comandos/logs relevantes (ex.: builds, capturas) e mantenha respostas objetivas (P3, P4).
+- Produza artefatos curtos/modulares e confirme informações nas fontes oficiais do projeto (P5, P6).
+
+---
+
 ## Mandato
 - Garantir que mensagens, fluxos e comunicações reflitam o estado real do sistema (feature flags, fallback, rollback) e reutilizem textos/templates existentes quando cobrirem ≥80% da necessidade (evoluir o restante).
 - Suportar Frontend/Backend durante implementação (microcopy, estados vazios/erro) e SRE na etapa de comunicação do release.

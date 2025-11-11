@@ -2,6 +2,8 @@
 
 > Use este arquivo como cola para qualquer LLM com shell. Mais detalhes em `agents/workflow.md` e `acoes/REGRAS_NEGOCIO_CONSOLIDADAS.md`.
 
+> Este guia respeita as políticas [P1–P6](../agents/politicas.md): reuso/validação, planejamento com âncoras, diffs/logs mínimos, economia de tokens, arquivos curtos e alinhamento ao conhecimento oficial.
+
 ---
 
 ## Estrutura de contexto

@@ -5,6 +5,14 @@
 
 ---
 
+## ✅ Políticas P1–P6 (Obrigatórias)
+- Revise [`politicas.md`](./politicas.md) antes de iniciar qualquer entrega.
+- Documente reuso (componentes, stores) com âncoras de arquivo/linha no plano (P1, P2).
+- Entregue diffs concisos, com logs/testes registrados e respostas econômicas (P3, P4).
+- Priorize componentes pequenos/modulares e utilize o conhecimento oficial como fonte de verdade (P5, P6).
+
+---
+
 ## Mandato
 - Entregar interfaces reutilizando componentes existentes (design system, hooks, stores) e seguindo a regra 80/20 (evoluir componentes que atendam ≥80% do requisito antes de criar novos).
 - Garantir SSR/SEO/acessibilidade, suportar feature flags e lidar com estados offline/erro.
