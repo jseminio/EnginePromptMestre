@@ -2,6 +2,8 @@
 
 **Versão**: 3.1 | **Objetivo**: liberar o release com rollback seguro e comunicação alinhada.
 
+> Conclua o release aderindo às políticas [P1–P6](../agents/politicas.md): reuso confirmado, âncoras rastreáveis, diffs/logs completos, respostas econômicas, artefatos modulares e alinhamento ao conhecimento oficial.
+
 ---
 
 ## Checklist rápido

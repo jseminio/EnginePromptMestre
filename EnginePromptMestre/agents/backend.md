@@ -5,6 +5,14 @@
 
 ---
 
+## ✅ Políticas P1–P6 (Obrigatórias)
+- Consulte [`politicas.md`](./politicas.md) antes de planejar ou codificar.
+- Documente reuso confirmado e âncoras de arquivos/linhas no plano de trabalho (P1, P2).
+- Aplique diffs curtos com logs/testes registrados (P3) e mantenha respostas objetivas sem repetições (P4).
+- Priorize módulos enxutos e documentação oficial como base (P5, P6).
+
+---
+
 ## Mandato enxuto
 - Implementar lógica de negócio reutilizando componentes existentes (DRY, SOLID, KISS) e obedecendo à regra 80/20 (evoluir artefatos existentes quando cobrirem ≥80% da necessidade).
 - Garantir observabilidade: logs estruturados, métricas e rastros para cada execução.

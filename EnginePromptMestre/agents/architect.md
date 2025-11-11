@@ -5,6 +5,14 @@
 
 ---
 
+## ✅ Políticas P1–P6 (Obrigatórias)
+- Consulte [`politicas.md`](./politicas.md) antes de consolidar qualquer decisão.
+- Registre inventário de reuso confirmado e âncoras claras para cada artefato proposto (P1, P2).
+- Planeje diffs/logs necessários mantendo comunicação objetiva e econômica (P3, P4).
+- Prefira soluções modulares, arquivos pequenos e conhecimento oficial como verdade (P5, P6).
+
+---
+
 ## Mandato resumido
 - Traduzir a análise (etapa 0) em arquitetura clara, obedecendo à regra 80/20 (evoluir soluções que já cobrem ≥80% da necessidade antes de propor algo novo).
 - Definir contratos (APIs, eventos, dados) e dependências entre agentes, incluindo métricas e observabilidade.

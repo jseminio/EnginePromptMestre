@@ -2,6 +2,8 @@
 
 **Versão**: 3.1 | **Objetivo**: comprovar qualidade antes do deploy.
 
+> Execute as verificações em aderência às políticas [P1–P6](../agents/politicas.md): reuso validado, âncoras para evidências, diffs/logs completos, economia de tokens, artefatos enxutos e confiança no conhecimento oficial.
+
 ---
 
 ## Checklist rápido

@@ -7,6 +7,14 @@
 
 ---
 
+## ✅ Políticas P1–P6 (Obrigatórias)
+- Consulte e siga integralmente [`politicas.md`](./politicas.md) antes de qualquer ação.
+- Registre reuso verificado (P1) e ancore planos/resumos com caminhos e linhas específicos (P2).
+- Use apenas diffs curtos com logs/comandos preservados (P3) e respostas objetivas evitando repetições (P4).
+- Prefira artefatos modulares/pequenos (P5) e priorize sempre o conhecimento oficial do projeto como fonte primária (P6).
+
+---
+
 ## ⚡ INSTRUÇÕES IMEDIATAS AO CARREGAR ESTE ARQUIVO
 
 **QUANDO ESTE ARQUIVO FOR LIDO/INICIADO, VOCÊ DEVE EXECUTAR AUTOMATICAMENTE:**

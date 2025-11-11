@@ -6,6 +6,13 @@
 
 ---
 
+## ✅ Políticas P1–P6 (Obrigatórias)
+- Leia e aplique [`politicas.md`](./politicas.md) antes de executar qualquer etapa ou instrução compartilhada.
+- Assegure reuso verificado e âncoras claras em cada plano (P1, P2) e mantenha logs/diffs concisos (P3, P4).
+- Preserve modularidade dos artefatos distribuídos (P5) e baseie decisões no conhecimento oficial do projeto (P6).
+
+---
+
 ## VISÃO GERAL DO WORKFLOW
 
 O workflow é estruturado em **5 etapas sequenciais** (0→4), cada uma com agentes especializados, entregas obrigatórias e aprovações explícitas.
